@@ -1,0 +1,2899 @@
+// Code generated - DO NOT EDIT.
+// This file is a generated binding and any manual changes will be lost.
+
+package SRTToken
+
+import (
+	"math/big"
+	"strings"
+)
+
+// BasicTokenABI is the input ABI used to generate the binding from.
+const BasicTokenABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"}]"
+
+// BasicTokenBin is the compiled bytecode used for deploying new contracts.
+const BasicTokenBin = `0x`
+
+// DeployBasicToken deploys a new Ethereum contract, binding an instance of BasicToken to it.
+func DeployBasicToken(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *BasicToken, error) {
+	parsed, err := abi.JSON(strings.NewReader(BasicTokenABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(BasicTokenBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &BasicToken{BasicTokenCaller: BasicTokenCaller{contract: contract}, BasicTokenTransactor: BasicTokenTransactor{contract: contract}}, nil
+}
+
+// BasicToken is an auto generated Go binding around an Ethereum contract.
+type BasicToken struct {
+	BasicTokenCaller     // Read-only binding to the contract
+	BasicTokenTransactor // Write-only binding to the contract
+}
+
+// BasicTokenCaller is an auto generated read-only Go binding around an Ethereum contract.
+type BasicTokenCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// BasicTokenTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type BasicTokenTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// BasicTokenSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type BasicTokenSession struct {
+	Contract     *BasicToken       // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// BasicTokenCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type BasicTokenCallerSession struct {
+	Contract *BasicTokenCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts     // Call options to use throughout this session
+}
+
+// BasicTokenTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type BasicTokenTransactorSession struct {
+	Contract     *BasicTokenTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts     // Transaction auth options to use throughout this session
+}
+
+// BasicTokenRaw is an auto generated low-level Go binding around an Ethereum contract.
+type BasicTokenRaw struct {
+	Contract *BasicToken // Generic contract binding to access the raw methods on
+}
+
+// BasicTokenCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type BasicTokenCallerRaw struct {
+	Contract *BasicTokenCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// BasicTokenTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type BasicTokenTransactorRaw struct {
+	Contract *BasicTokenTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewBasicToken creates a new instance of BasicToken, bound to a specific deployed contract.
+func NewBasicToken(address common.Address, backend bind.ContractBackend) (*BasicToken, error) {
+	contract, err := bindBasicToken(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &BasicToken{BasicTokenCaller: BasicTokenCaller{contract: contract}, BasicTokenTransactor: BasicTokenTransactor{contract: contract}}, nil
+}
+
+// NewBasicTokenCaller creates a new read-only instance of BasicToken, bound to a specific deployed contract.
+func NewBasicTokenCaller(address common.Address, caller bind.ContractCaller) (*BasicTokenCaller, error) {
+	contract, err := bindBasicToken(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &BasicTokenCaller{contract: contract}, nil
+}
+
+// NewBasicTokenTransactor creates a new write-only instance of BasicToken, bound to a specific deployed contract.
+func NewBasicTokenTransactor(address common.Address, transactor bind.ContractTransactor) (*BasicTokenTransactor, error) {
+	contract, err := bindBasicToken(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &BasicTokenTransactor{contract: contract}, nil
+}
+
+// bindBasicToken binds a generic wrapper to an already deployed contract.
+func bindBasicToken(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(BasicTokenABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_BasicToken *BasicTokenRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _BasicToken.Contract.BasicTokenCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_BasicToken *BasicTokenRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _BasicToken.Contract.BasicTokenTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_BasicToken *BasicTokenRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _BasicToken.Contract.BasicTokenTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_BasicToken *BasicTokenCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _BasicToken.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_BasicToken *BasicTokenTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _BasicToken.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_BasicToken *BasicTokenTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _BasicToken.Contract.contract.Transact(opts, method, params...)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_BasicToken *BasicTokenCaller) BalanceOf(opts *bind.CallOpts, _owner common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BasicToken.contract.Call(opts, out, "balanceOf", _owner)
+	return *ret0, err
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_BasicToken *BasicTokenSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _BasicToken.Contract.BalanceOf(&_BasicToken.CallOpts, _owner)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_BasicToken *BasicTokenCallerSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _BasicToken.Contract.BalanceOf(&_BasicToken.CallOpts, _owner)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_BasicToken *BasicTokenCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _BasicToken.contract.Call(opts, out, "totalSupply")
+	return *ret0, err
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_BasicToken *BasicTokenSession) TotalSupply() (*big.Int, error) {
+	return _BasicToken.Contract.TotalSupply(&_BasicToken.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_BasicToken *BasicTokenCallerSession) TotalSupply() (*big.Int, error) {
+	return _BasicToken.Contract.TotalSupply(&_BasicToken.CallOpts)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_BasicToken *BasicTokenTransactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _BasicToken.contract.Transact(opts, "transfer", to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_BasicToken *BasicTokenSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _BasicToken.Contract.Transfer(&_BasicToken.TransactOpts, to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_BasicToken *BasicTokenTransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _BasicToken.Contract.Transfer(&_BasicToken.TransactOpts, to, value)
+}
+
+// ERC20ABI is the input ABI used to generate the binding from.
+const ERC20ABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"}]"
+
+// ERC20Bin is the compiled bytecode used for deploying new contracts.
+const ERC20Bin = `0x`
+
+// DeployERC20 deploys a new Ethereum contract, binding an instance of ERC20 to it.
+func DeployERC20(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *ERC20, error) {
+	parsed, err := abi.JSON(strings.NewReader(ERC20ABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(ERC20Bin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &ERC20{ERC20Caller: ERC20Caller{contract: contract}, ERC20Transactor: ERC20Transactor{contract: contract}}, nil
+}
+
+// ERC20 is an auto generated Go binding around an Ethereum contract.
+type ERC20 struct {
+	ERC20Caller     // Read-only binding to the contract
+	ERC20Transactor // Write-only binding to the contract
+}
+
+// ERC20Caller is an auto generated read-only Go binding around an Ethereum contract.
+type ERC20Caller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// ERC20Transactor is an auto generated write-only Go binding around an Ethereum contract.
+type ERC20Transactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// ERC20Session is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type ERC20Session struct {
+	Contract     *ERC20            // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// ERC20CallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type ERC20CallerSession struct {
+	Contract *ERC20Caller  // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts // Call options to use throughout this session
+}
+
+// ERC20TransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type ERC20TransactorSession struct {
+	Contract     *ERC20Transactor  // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// ERC20Raw is an auto generated low-level Go binding around an Ethereum contract.
+type ERC20Raw struct {
+	Contract *ERC20 // Generic contract binding to access the raw methods on
+}
+
+// ERC20CallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type ERC20CallerRaw struct {
+	Contract *ERC20Caller // Generic read-only contract binding to access the raw methods on
+}
+
+// ERC20TransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type ERC20TransactorRaw struct {
+	Contract *ERC20Transactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewERC20 creates a new instance of ERC20, bound to a specific deployed contract.
+func NewERC20(address common.Address, backend bind.ContractBackend) (*ERC20, error) {
+	contract, err := bindERC20(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20{ERC20Caller: ERC20Caller{contract: contract}, ERC20Transactor: ERC20Transactor{contract: contract}}, nil
+}
+
+// NewERC20Caller creates a new read-only instance of ERC20, bound to a specific deployed contract.
+func NewERC20Caller(address common.Address, caller bind.ContractCaller) (*ERC20Caller, error) {
+	contract, err := bindERC20(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20Caller{contract: contract}, nil
+}
+
+// NewERC20Transactor creates a new write-only instance of ERC20, bound to a specific deployed contract.
+func NewERC20Transactor(address common.Address, transactor bind.ContractTransactor) (*ERC20Transactor, error) {
+	contract, err := bindERC20(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20Transactor{contract: contract}, nil
+}
+
+// bindERC20 binds a generic wrapper to an already deployed contract.
+func bindERC20(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(ERC20ABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_ERC20 *ERC20Raw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ERC20.Contract.ERC20Caller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_ERC20 *ERC20Raw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ERC20.Contract.ERC20Transactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_ERC20 *ERC20Raw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ERC20.Contract.ERC20Transactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_ERC20 *ERC20CallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ERC20.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_ERC20 *ERC20TransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ERC20.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_ERC20 *ERC20TransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ERC20.Contract.contract.Transact(opts, method, params...)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(owner address, spender address) constant returns(uint256)
+func (_ERC20 *ERC20Caller) Allowance(opts *bind.CallOpts, owner common.Address, spender common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _ERC20.contract.Call(opts, out, "allowance", owner, spender)
+	return *ret0, err
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(owner address, spender address) constant returns(uint256)
+func (_ERC20 *ERC20Session) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _ERC20.Contract.Allowance(&_ERC20.CallOpts, owner, spender)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(owner address, spender address) constant returns(uint256)
+func (_ERC20 *ERC20CallerSession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _ERC20.Contract.Allowance(&_ERC20.CallOpts, owner, spender)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20 *ERC20Caller) BalanceOf(opts *bind.CallOpts, who common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _ERC20.contract.Call(opts, out, "balanceOf", who)
+	return *ret0, err
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20 *ERC20Session) BalanceOf(who common.Address) (*big.Int, error) {
+	return _ERC20.Contract.BalanceOf(&_ERC20.CallOpts, who)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20 *ERC20CallerSession) BalanceOf(who common.Address) (*big.Int, error) {
+	return _ERC20.Contract.BalanceOf(&_ERC20.CallOpts, who)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20 *ERC20Caller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _ERC20.contract.Call(opts, out, "totalSupply")
+	return *ret0, err
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20 *ERC20Session) TotalSupply() (*big.Int, error) {
+	return _ERC20.Contract.TotalSupply(&_ERC20.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20 *ERC20CallerSession) TotalSupply() (*big.Int, error) {
+	return _ERC20.Contract.TotalSupply(&_ERC20.CallOpts)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(spender address, value uint256) returns(bool)
+func (_ERC20 *ERC20Transactor) Approve(opts *bind.TransactOpts, spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.contract.Transact(opts, "approve", spender, value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(spender address, value uint256) returns(bool)
+func (_ERC20 *ERC20Session) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.Approve(&_ERC20.TransactOpts, spender, value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(spender address, value uint256) returns(bool)
+func (_ERC20 *ERC20TransactorSession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.Approve(&_ERC20.TransactOpts, spender, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20 *ERC20Transactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.contract.Transact(opts, "transfer", to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20 *ERC20Session) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.Transfer(&_ERC20.TransactOpts, to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20 *ERC20TransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.Transfer(&_ERC20.TransactOpts, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(from address, to address, value uint256) returns(bool)
+func (_ERC20 *ERC20Transactor) TransferFrom(opts *bind.TransactOpts, from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.contract.Transact(opts, "transferFrom", from, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(from address, to address, value uint256) returns(bool)
+func (_ERC20 *ERC20Session) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.TransferFrom(&_ERC20.TransactOpts, from, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(from address, to address, value uint256) returns(bool)
+func (_ERC20 *ERC20TransactorSession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20.Contract.TransferFrom(&_ERC20.TransactOpts, from, to, value)
+}
+
+// ERC20BasicABI is the input ABI used to generate the binding from.
+const ERC20BasicABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"}]"
+
+// ERC20BasicBin is the compiled bytecode used for deploying new contracts.
+const ERC20BasicBin = `0x`
+
+// DeployERC20Basic deploys a new Ethereum contract, binding an instance of ERC20Basic to it.
+func DeployERC20Basic(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *ERC20Basic, error) {
+	parsed, err := abi.JSON(strings.NewReader(ERC20BasicABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(ERC20BasicBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &ERC20Basic{ERC20BasicCaller: ERC20BasicCaller{contract: contract}, ERC20BasicTransactor: ERC20BasicTransactor{contract: contract}}, nil
+}
+
+// ERC20Basic is an auto generated Go binding around an Ethereum contract.
+type ERC20Basic struct {
+	ERC20BasicCaller     // Read-only binding to the contract
+	ERC20BasicTransactor // Write-only binding to the contract
+}
+
+// ERC20BasicCaller is an auto generated read-only Go binding around an Ethereum contract.
+type ERC20BasicCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// ERC20BasicTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type ERC20BasicTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// ERC20BasicSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type ERC20BasicSession struct {
+	Contract     *ERC20Basic       // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// ERC20BasicCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type ERC20BasicCallerSession struct {
+	Contract *ERC20BasicCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts     // Call options to use throughout this session
+}
+
+// ERC20BasicTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type ERC20BasicTransactorSession struct {
+	Contract     *ERC20BasicTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts     // Transaction auth options to use throughout this session
+}
+
+// ERC20BasicRaw is an auto generated low-level Go binding around an Ethereum contract.
+type ERC20BasicRaw struct {
+	Contract *ERC20Basic // Generic contract binding to access the raw methods on
+}
+
+// ERC20BasicCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type ERC20BasicCallerRaw struct {
+	Contract *ERC20BasicCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// ERC20BasicTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type ERC20BasicTransactorRaw struct {
+	Contract *ERC20BasicTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewERC20Basic creates a new instance of ERC20Basic, bound to a specific deployed contract.
+func NewERC20Basic(address common.Address, backend bind.ContractBackend) (*ERC20Basic, error) {
+	contract, err := bindERC20Basic(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20Basic{ERC20BasicCaller: ERC20BasicCaller{contract: contract}, ERC20BasicTransactor: ERC20BasicTransactor{contract: contract}}, nil
+}
+
+// NewERC20BasicCaller creates a new read-only instance of ERC20Basic, bound to a specific deployed contract.
+func NewERC20BasicCaller(address common.Address, caller bind.ContractCaller) (*ERC20BasicCaller, error) {
+	contract, err := bindERC20Basic(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20BasicCaller{contract: contract}, nil
+}
+
+// NewERC20BasicTransactor creates a new write-only instance of ERC20Basic, bound to a specific deployed contract.
+func NewERC20BasicTransactor(address common.Address, transactor bind.ContractTransactor) (*ERC20BasicTransactor, error) {
+	contract, err := bindERC20Basic(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &ERC20BasicTransactor{contract: contract}, nil
+}
+
+// bindERC20Basic binds a generic wrapper to an already deployed contract.
+func bindERC20Basic(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(ERC20BasicABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_ERC20Basic *ERC20BasicRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ERC20Basic.Contract.ERC20BasicCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_ERC20Basic *ERC20BasicRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.ERC20BasicTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_ERC20Basic *ERC20BasicRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.ERC20BasicTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_ERC20Basic *ERC20BasicCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _ERC20Basic.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_ERC20Basic *ERC20BasicTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_ERC20Basic *ERC20BasicTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.contract.Transact(opts, method, params...)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20Basic *ERC20BasicCaller) BalanceOf(opts *bind.CallOpts, who common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _ERC20Basic.contract.Call(opts, out, "balanceOf", who)
+	return *ret0, err
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20Basic *ERC20BasicSession) BalanceOf(who common.Address) (*big.Int, error) {
+	return _ERC20Basic.Contract.BalanceOf(&_ERC20Basic.CallOpts, who)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(who address) constant returns(uint256)
+func (_ERC20Basic *ERC20BasicCallerSession) BalanceOf(who common.Address) (*big.Int, error) {
+	return _ERC20Basic.Contract.BalanceOf(&_ERC20Basic.CallOpts, who)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20Basic *ERC20BasicCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _ERC20Basic.contract.Call(opts, out, "totalSupply")
+	return *ret0, err
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20Basic *ERC20BasicSession) TotalSupply() (*big.Int, error) {
+	return _ERC20Basic.Contract.TotalSupply(&_ERC20Basic.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_ERC20Basic *ERC20BasicCallerSession) TotalSupply() (*big.Int, error) {
+	return _ERC20Basic.Contract.TotalSupply(&_ERC20Basic.CallOpts)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20Basic *ERC20BasicTransactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20Basic.contract.Transact(opts, "transfer", to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20Basic *ERC20BasicSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.Transfer(&_ERC20Basic.TransactOpts, to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(to address, value uint256) returns(bool)
+func (_ERC20Basic *ERC20BasicTransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _ERC20Basic.Contract.Transfer(&_ERC20Basic.TransactOpts, to, value)
+}
+
+// MigrationAgentABI is the input ABI used to generate the binding from.
+const MigrationAgentABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"migrateFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
+
+// MigrationAgentBin is the compiled bytecode used for deploying new contracts.
+const MigrationAgentBin = `0x`
+
+// DeployMigrationAgent deploys a new Ethereum contract, binding an instance of MigrationAgent to it.
+func DeployMigrationAgent(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *MigrationAgent, error) {
+	parsed, err := abi.JSON(strings.NewReader(MigrationAgentABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(MigrationAgentBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &MigrationAgent{MigrationAgentCaller: MigrationAgentCaller{contract: contract}, MigrationAgentTransactor: MigrationAgentTransactor{contract: contract}}, nil
+}
+
+// MigrationAgent is an auto generated Go binding around an Ethereum contract.
+type MigrationAgent struct {
+	MigrationAgentCaller     // Read-only binding to the contract
+	MigrationAgentTransactor // Write-only binding to the contract
+}
+
+// MigrationAgentCaller is an auto generated read-only Go binding around an Ethereum contract.
+type MigrationAgentCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// MigrationAgentTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type MigrationAgentTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// MigrationAgentSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type MigrationAgentSession struct {
+	Contract     *MigrationAgent   // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// MigrationAgentCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type MigrationAgentCallerSession struct {
+	Contract *MigrationAgentCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts         // Call options to use throughout this session
+}
+
+// MigrationAgentTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type MigrationAgentTransactorSession struct {
+	Contract     *MigrationAgentTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts         // Transaction auth options to use throughout this session
+}
+
+// MigrationAgentRaw is an auto generated low-level Go binding around an Ethereum contract.
+type MigrationAgentRaw struct {
+	Contract *MigrationAgent // Generic contract binding to access the raw methods on
+}
+
+// MigrationAgentCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type MigrationAgentCallerRaw struct {
+	Contract *MigrationAgentCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// MigrationAgentTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type MigrationAgentTransactorRaw struct {
+	Contract *MigrationAgentTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewMigrationAgent creates a new instance of MigrationAgent, bound to a specific deployed contract.
+func NewMigrationAgent(address common.Address, backend bind.ContractBackend) (*MigrationAgent, error) {
+	contract, err := bindMigrationAgent(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &MigrationAgent{MigrationAgentCaller: MigrationAgentCaller{contract: contract}, MigrationAgentTransactor: MigrationAgentTransactor{contract: contract}}, nil
+}
+
+// NewMigrationAgentCaller creates a new read-only instance of MigrationAgent, bound to a specific deployed contract.
+func NewMigrationAgentCaller(address common.Address, caller bind.ContractCaller) (*MigrationAgentCaller, error) {
+	contract, err := bindMigrationAgent(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &MigrationAgentCaller{contract: contract}, nil
+}
+
+// NewMigrationAgentTransactor creates a new write-only instance of MigrationAgent, bound to a specific deployed contract.
+func NewMigrationAgentTransactor(address common.Address, transactor bind.ContractTransactor) (*MigrationAgentTransactor, error) {
+	contract, err := bindMigrationAgent(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &MigrationAgentTransactor{contract: contract}, nil
+}
+
+// bindMigrationAgent binds a generic wrapper to an already deployed contract.
+func bindMigrationAgent(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(MigrationAgentABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_MigrationAgent *MigrationAgentRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _MigrationAgent.Contract.MigrationAgentCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_MigrationAgent *MigrationAgentRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.MigrationAgentTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_MigrationAgent *MigrationAgentRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.MigrationAgentTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_MigrationAgent *MigrationAgentCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _MigrationAgent.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_MigrationAgent *MigrationAgentTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_MigrationAgent *MigrationAgentTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.contract.Transact(opts, method, params...)
+}
+
+// MigrateFrom is a paid mutator transaction binding the contract method 0x7a3130e3.
+//
+// Solidity: function migrateFrom(_from address, _value uint256) returns()
+func (_MigrationAgent *MigrationAgentTransactor) MigrateFrom(opts *bind.TransactOpts, _from common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _MigrationAgent.contract.Transact(opts, "migrateFrom", _from, _value)
+}
+
+// MigrateFrom is a paid mutator transaction binding the contract method 0x7a3130e3.
+//
+// Solidity: function migrateFrom(_from address, _value uint256) returns()
+func (_MigrationAgent *MigrationAgentSession) MigrateFrom(_from common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.MigrateFrom(&_MigrationAgent.TransactOpts, _from, _value)
+}
+
+// MigrateFrom is a paid mutator transaction binding the contract method 0x7a3130e3.
+//
+// Solidity: function migrateFrom(_from address, _value uint256) returns()
+func (_MigrationAgent *MigrationAgentTransactorSession) MigrateFrom(_from common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _MigrationAgent.Contract.MigrateFrom(&_MigrationAgent.TransactOpts, _from, _value)
+}
+
+// OwnableABI is the input ABI used to generate the binding from.
+const OwnableABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}]"
+
+// OwnableBin is the compiled bytecode used for deploying new contracts.
+const OwnableBin = `0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a03199091161790556101768061003b6000396000f30060606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416638da5cb5b8114610050578063f2fde38b1461007f575b600080fd5b341561005b57600080fd5b6100636100a0565b604051600160a060020a03909116815260200160405180910390f35b341561008a57600080fd5b61009e600160a060020a03600435166100af565b005b600054600160a060020a031681565b60005433600160a060020a039081169116146100ca57600080fd5b600160a060020a03811615156100df57600080fd5b600054600160a060020a0380831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a03929092169190911790555600a165627a7a72305820591f9442974b24893bd2a646818fe953a285a0e6da4d782cc12369b319fc2d390029`
+
+// DeployOwnable deploys a new Ethereum contract, binding an instance of Ownable to it.
+func DeployOwnable(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *Ownable, error) {
+	parsed, err := abi.JSON(strings.NewReader(OwnableABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(OwnableBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &Ownable{OwnableCaller: OwnableCaller{contract: contract}, OwnableTransactor: OwnableTransactor{contract: contract}}, nil
+}
+
+// Ownable is an auto generated Go binding around an Ethereum contract.
+type Ownable struct {
+	OwnableCaller     // Read-only binding to the contract
+	OwnableTransactor // Write-only binding to the contract
+}
+
+// OwnableCaller is an auto generated read-only Go binding around an Ethereum contract.
+type OwnableCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// OwnableTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type OwnableTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// OwnableSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type OwnableSession struct {
+	Contract     *Ownable          // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// OwnableCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type OwnableCallerSession struct {
+	Contract *OwnableCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts  // Call options to use throughout this session
+}
+
+// OwnableTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type OwnableTransactorSession struct {
+	Contract     *OwnableTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts  // Transaction auth options to use throughout this session
+}
+
+// OwnableRaw is an auto generated low-level Go binding around an Ethereum contract.
+type OwnableRaw struct {
+	Contract *Ownable // Generic contract binding to access the raw methods on
+}
+
+// OwnableCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type OwnableCallerRaw struct {
+	Contract *OwnableCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// OwnableTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type OwnableTransactorRaw struct {
+	Contract *OwnableTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewOwnable creates a new instance of Ownable, bound to a specific deployed contract.
+func NewOwnable(address common.Address, backend bind.ContractBackend) (*Ownable, error) {
+	contract, err := bindOwnable(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &Ownable{OwnableCaller: OwnableCaller{contract: contract}, OwnableTransactor: OwnableTransactor{contract: contract}}, nil
+}
+
+// NewOwnableCaller creates a new read-only instance of Ownable, bound to a specific deployed contract.
+func NewOwnableCaller(address common.Address, caller bind.ContractCaller) (*OwnableCaller, error) {
+	contract, err := bindOwnable(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &OwnableCaller{contract: contract}, nil
+}
+
+// NewOwnableTransactor creates a new write-only instance of Ownable, bound to a specific deployed contract.
+func NewOwnableTransactor(address common.Address, transactor bind.ContractTransactor) (*OwnableTransactor, error) {
+	contract, err := bindOwnable(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &OwnableTransactor{contract: contract}, nil
+}
+
+// bindOwnable binds a generic wrapper to an already deployed contract.
+func bindOwnable(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(OwnableABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_Ownable *OwnableRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _Ownable.Contract.OwnableCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_Ownable *OwnableRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Ownable.Contract.OwnableTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_Ownable *OwnableRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Ownable.Contract.OwnableTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_Ownable *OwnableCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _Ownable.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_Ownable *OwnableTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Ownable.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_Ownable *OwnableTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Ownable.Contract.contract.Transact(opts, method, params...)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_Ownable *OwnableCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _Ownable.contract.Call(opts, out, "owner")
+	return *ret0, err
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_Ownable *OwnableSession) Owner() (common.Address, error) {
+	return _Ownable.Contract.Owner(&_Ownable.CallOpts)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_Ownable *OwnableCallerSession) Owner() (common.Address, error) {
+	return _Ownable.Contract.Owner(&_Ownable.CallOpts)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_Ownable *OwnableTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _Ownable.contract.Transact(opts, "transferOwnership", newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_Ownable *OwnableSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Ownable.Contract.TransferOwnership(&_Ownable.TransactOpts, newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_Ownable *OwnableTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Ownable.Contract.TransferOwnership(&_Ownable.TransactOpts, newOwner)
+}
+
+// SRTTokenABI is the input ABI used to generate the binding from.
+const SRTTokenABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"MULTIPLIER\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"requestedWithdrawal\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"STAGE2\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"maxTokensAmount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow2\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_escrow1\",\"type\":\"address\"},{\"name\":\"_escrow2\",\"type\":\"address\"},{\"name\":\"_escrow3\",\"type\":\"address\"}],\"name\":\"setEscrow\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"acceptWithdrawal\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_referal\",\"type\":\"address\"}],\"name\":\"addTokens\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"INITIAL_SUPPLY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_receiptId\",\"type\":\"string\"}],\"name\":\"payForLicense\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minTokensAmount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"buyDiscount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseApproval\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"infrostructure\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"company\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow1\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"setTokenPrice\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"STAGE1\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"TOKENS_FOR_SELLE\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setMigrationAgent\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"STAGE4\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenPrice\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"migrationAgent\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow3Accepted\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setInfrostructure\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"STAGE5\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokensSoldInCurrentStage\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"benefactor\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"consultants\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setBenefactor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"migrate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bounty\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow2Accepted\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_discount\",\"type\":\"uint256\"}],\"name\":\"setBuyDiscount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setMinTokensAmount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"requestWithdrawal\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setCompany\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"advisoryBoard\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalWithdrawalAmountInControl\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setBounty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setConsultants\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow3\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"stage\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"address\"}],\"name\":\"setAdvisoryBoard\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"escrow1Accepted\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalEarnedEthBalance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseApproval\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"nextStage\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_referal\",\"type\":\"address\"}],\"name\":\"buy\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"timeCreated\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setMaxTokensAmount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"STAGE3\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"receiptId\",\"type\":\"string\"}],\"name\":\"PayForLicense\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"}]"
+
+// SRTTokenBin is the compiled bytecode used for deploying new contracts.
+const SRTTokenBin = `0x60606040526004805460ff19169055600060058190556006819055600f600955600a55341561002d57600080fd5b60028054600160a060020a033316600160a060020a0319918216811783556509184e72a000600081815582815260016020526040902055825490911617905542600c556121738061007f6000396000f3006060604052600436106102ea5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663059f8b1681146102ef57806306fdde03146103145780630791250a1461039e57806308bbf544146103b1578063095ea7b3146103da5780630a384665146104105780630d6b55cf146104235780630df9a50414610452578063144384281461047f57806318160ddd1461049257806323b872dd146104a557806327065d7c146104cd5780632ff2e9dc146104f6578063313ce567146105095780635f852d251461051c578063604234551461053e5780636408dc49146105515780636618846314610564578063666aa3f5146105865780636904c94d146105995780636a5058c3146105ac5780636a61e5fc146105bf57806370a08231146105d557806370b6d31b146105f4578063730ee22a1461060757806375e2ff651461061a5780637936c5e5146106395780637ff9b5961461064c5780638328dbcd1461065f578063857de1f61461067257806387bd27df1461068557806388568fd8146106a4578063888fe9aa146106b75780638a81694c146106ca5780638da5cb5b146106dd5780638da78338146106f05780638fc47bc9146107035780638fd3ab8014610722578063943dfef1146107355780639543b4b0146107485780639556b8f31461075b57806395d89b41146107715780639ca39000146107845780639ee679e81461079a578063a8db2445146107b0578063a9059cbb146107cf578063aa674836146107f1578063bb626f5714610804578063bc300ed314610817578063bcdc4a5a14610836578063bf1b70b914610855578063c040e6b814610868578063c55e11031461087b578063c7b5be1c1461089a578063d4cda731146108ad578063d73dd623146108c0578063dd62ed3e146108e2578063ee3743ab14610907578063f088d5471461091a578063f1653f6e1461092e578063f2fde38b14610941578063f4005cb614610960578063feb7efa014610976575b600080fd5b34156102fa57600080fd5b610302610989565b60405190815260200160405180910390f35b341561031f57600080fd5b610327610990565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561036357808201518382015260200161034b565b50505050905090810190601f1680156103905780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34156103a957600080fd5b6103026109c7565b34156103bc57600080fd5b6103c46109cd565b60405160ff909116815260200160405180910390f35b34156103e557600080fd5b6103fc600160a060020a03600435166024356109d2565b604051901515815260200160405180910390f35b341561041b57600080fd5b610302610a3e565b341561042e57600080fd5b610436610a44565b604051600160a060020a03909116815260200160405180910390f35b341561045d57600080fd5b61047d600160a060020a0360043581169060243581169060443516610a53565b005b341561048a57600080fd5b6103fc610aec565b341561049d57600080fd5b610302610cee565b34156104b057600080fd5b6103fc600160a060020a0360043581169060243516604435610cf4565b34156104d857600080fd5b6103fc600160a060020a036004358116906024359060443516610ee0565b341561050157600080fd5b61030261124d565b341561051457600080fd5b6103c4611257565b341561052757600080fd5b6103fc60048035906024803590810191013561125c565b341561054957600080fd5b610302611335565b341561055c57600080fd5b61030261133b565b341561056f57600080fd5b6103fc600160a060020a0360043516602435611341565b341561059157600080fd5b61043661143b565b34156105a457600080fd5b61043661144a565b34156105b757600080fd5b610436611459565b34156105ca57600080fd5b61047d600435611468565b34156105e057600080fd5b610302600160a060020a0360043516611488565b34156105ff57600080fd5b6103c46114a3565b341561061257600080fd5b6103026114a8565b341561062557600080fd5b61047d600160a060020a03600435166114b2565b341561064457600080fd5b6103c46114ef565b341561065757600080fd5b6103026114f4565b341561066a57600080fd5b6104366114fa565b341561067d57600080fd5b6103fc611509565b341561069057600080fd5b61047d600160a060020a036004351661152c565b34156106af57600080fd5b6103c461157e565b34156106c257600080fd5b610302611583565b34156106d557600080fd5b610436611589565b34156106e857600080fd5b610436611598565b34156106fb57600080fd5b6104366115a7565b341561070e57600080fd5b61047d600160a060020a03600435166115b6565b341561072d57600080fd5b61047d611608565b341561074057600080fd5b6104366116cf565b341561075357600080fd5b6103fc6116de565b341561076657600080fd5b61047d600435611700565b341561077c57600080fd5b610327611720565b341561078f57600080fd5b61047d600435611757565b34156107a557600080fd5b6103fc60043561177c565b34156107bb57600080fd5b61047d600160a060020a0360043516611827565b34156107da57600080fd5b6103fc600160a060020a0360043516602435611879565b34156107fc57600080fd5b6104366119b9565b341561080f57600080fd5b6103026119c8565b341561082257600080fd5b61047d600160a060020a03600435166119ce565b341561084157600080fd5b61047d600160a060020a0360043516611a20565b341561086057600080fd5b610436611a72565b341561087357600080fd5b6103c4611a81565b341561088657600080fd5b61047d600160a060020a0360043516611a8a565b34156108a557600080fd5b6103fc611adc565b34156108b857600080fd5b610302611afd565b34156108cb57600080fd5b6103fc600160a060020a0360043516602435611b03565b34156108ed57600080fd5b610302600160a060020a0360043581169060243516611ba7565b341561091257600080fd5b61047d611bd2565b61047d600160a060020a0360043516611cd2565b341561093957600080fd5b610302612041565b341561094c57600080fd5b61047d600160a060020a0360043516612047565b341561096b57600080fd5b61047d6004356120d5565b341561098157600080fd5b6103c46120fa565b620186a081565b60408051908101604052600881527f535254546f6b656e000000000000000000000000000000000000000000000000602082015281565b600d5481565b600181565b600160a060020a03338116600081815260036020908152604080832094871680845294909152808220859055909291907f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259085905190815260200160405180910390a350600192915050565b60075481565b601554600160a060020a031681565b60025433600160a060020a03908116911614610a6e57600080fd5b600160a060020a0383161515610a8357600080fd5b600160a060020a0382161515610a9857600080fd5b600160a060020a0381161515610aad57600080fd5b60148054600160a060020a03948516600160a060020a031991821617909155601580549385169382169390931790925560168054919093169116179055565b600080600d54111515610afe57600080fd5b60145433600160a060020a0390811691161415610b4b576017805474ff00000000000000000000000000000000000000001916740100000000000000000000000000000000000000001790555b60155433600160a060020a0390811691161415610b9a576017805475ff000000000000000000000000000000000000000000191675010000000000000000000000000000000000000000001790555b60165433600160a060020a0390811691161415610beb576017805476ff0000000000000000000000000000000000000000000019167601000000000000000000000000000000000000000000001790555b60175474010000000000000000000000000000000000000000900460ff161515610c1457600080fd5b6017547501000000000000000000000000000000000000000000900460ff161515610c3e57600080fd5b601754760100000000000000000000000000000000000000000000900460ff161515610c6957600080fd5b600e54600d54600160a060020a039091169080156108fc0290604051600060405180830381858888f193505050501515610ca557506000610ceb565b600454600060ff9091161115610cc257600d54600a805490910190555b506017805476ffffff0000000000000000000000000000000000000000191690556000600d5560015b90565b60005481565b6000600160a060020a0383161515610d0b57600080fd5b600160a060020a038416600090815260016020526040902054821115610d3057600080fd5b600160a060020a0380851660009081526003602090815260408083203390941683529290522054821115610d6357600080fd5b600654600160a060020a0385166000908152600160205260409020548390031015610d8d57600080fd5b600654600160a060020a03841660009081526001602052604090205483011015610db657600080fd5b600754600160a060020a03841660009081526001602052604090205483011115610ddf57600080fd5b600160a060020a038416600090815260016020526040902054610e08908363ffffffff6120ff16565b600160a060020a038086166000908152600160205260408082209390935590851681522054610e3d908363ffffffff61211116565b600160a060020a03808516600090815260016020908152604080832094909455878316825260038152838220339093168252919091522054610e85908363ffffffff6120ff16565b600160a060020a03808616600081815260036020908152604080832033861684529091529081902093909355908516916000805160206121288339815191529085905190815260200160405180910390a35060019392505050565b600254600090819033600160a060020a03908116911614610f0057600080fd5b600160a060020a0385161515610f1557600080fd5b5082600160a060020a03831615610fec57600654600160a060020a038616600090815260016020526040902054820160646002840204011015610f5757600080fd5b600754600160a060020a038616600090815260016020526040902054820160646002840204011115610f8857600080fd5b600754600160a060020a03841660009081526001602052604090205460646005840204011115610fb757600080fd5b600254600160a060020a0316600090815260016020526040902054606460078302048201901015610fe757600080fd5b611066565b600654600160a060020a0386166000908152600160205260409020548201101561101557600080fd5b600754600160a060020a0386166000908152600160205260409020548201111561103e57600080fd5b600254600160a060020a03166000908152600160205260409020548190101561106657600080fd5b600160a060020a038316156111a657600160a060020a0385166000908152600160205260409020546110a090606460028402048301612111565b600160a060020a0386811660009081526001602052604080822093909355908516815220546110d59060646005840204612111565b600160a060020a03848116600090815260016020526040808220939093556002549091168152208054606460078402818104928590039290920390925561112b91905b600554919004830163ffffffff61211116565b60055560028054600160a060020a038088169291169060008051602061212883398151915290606490850204840160405190815260200160405180910390a3600254600160a060020a0380851691166000805160206121288339815191526064600585020460405190815260200160405180910390a3611242565b600254600160a060020a0390811660009081526001602052604080822080548590039055918716815220546111e1908263ffffffff61211116565b600160a060020a03861660009081526001602052604090205560055461120d908263ffffffff61211116565b600555600254600160a060020a0380871691166000805160206121288339815191528360405190815260200160405180910390a35b506001949350505050565b6509184e72a00081565b600581565b600160a060020a033316600090815260016020526040812054620186a085029082908290101561128b57600080fd5b50600160a060020a0333811660009081526001602052604080822080548590039055600f54831682528082208054600a860490810190915560135490931682529081902080548301905585908590518083838082843782019150509250505060405180910390208233600160a060020a03167f33eef6f96f15040a3512cede3b5aa920f279fa348dd027ce2b9b890a13ceec9c60405160405180910390a450600195945050505050565b60065481565b60095481565b600160a060020a0333811660009081526003602090815260408083209386168352929052908120548083111561139e57600160a060020a0333811660009081526003602090815260408083209388168352929052908120556113d5565b6113ae818463ffffffff6120ff16565b600160a060020a033381166000908152600360209081526040808320938916835292905220555b600160a060020a0333811660008181526003602090815260408083209489168084529490915290819020547f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925915190815260200160405180910390a35060019392505050565b601354600160a060020a031681565b600f54600160a060020a031681565b601454600160a060020a031681565b60025433600160a060020a0390811691161461148357600080fd5b600855565b600160a060020a031660009081526001602052604090205490565b600081565b6505a38ccc300081565b60025433600160a060020a039081169116146114cd57600080fd5b60178054600160a060020a031916600160a060020a0392909216919091179055565b600381565b60085481565b601754600160a060020a031681565b601754760100000000000000000000000000000000000000000000900460ff1681565b60025433600160a060020a0390811691161461154757600080fd5b600160a060020a038116151561155c57600080fd5b60138054600160a060020a031916600160a060020a0392909216919091179055565b600481565b60055481565b600e54600160a060020a031681565b600254600160a060020a031681565b601054600160a060020a031681565b60025433600160a060020a039081169116146115d157600080fd5b600160a060020a03811615156115e657600080fd5b600e8054600160a060020a031916600160a060020a0392909216919091179055565b601754600090600160a060020a0316151561162257600080fd5b50600160a060020a0333818116600090815260016020526040808220805490839055825481900390925560175491939190911691637a3130e3918490517c010000000000000000000000000000000000000000000000000000000063ffffffff8516028152600160a060020a0390921660048301526024820152604401600060405180830381600087803b15156116b857600080fd5b6102c65a03f115156116c957600080fd5b50505050565b601254600160a060020a031681565b6017547501000000000000000000000000000000000000000000900460ff1681565b60025433600160a060020a0390811691161461171b57600080fd5b600955565b60408051908101604052600381527f5352540000000000000000000000000000000000000000000000000000000000602082015281565b60025433600160a060020a0390811691161461177257600080fd5b620186a002600655565b6002546000908190819033600160a060020a0390811691161461179e57600080fd5b600e54600160a060020a031615156117b557600080fd5b600454600060ff90911611156117fc57600c5442925062278d0090830304905083600a54016064600b548360010102600a028115156117f057fe5b0410156117fc57600080fd5b505050600d556017805476ffffff000000000000000000000000000000000000000019169055600190565b60025433600160a060020a0390811691161461184257600080fd5b600160a060020a038116151561185757600080fd5b600f8054600160a060020a031916600160a060020a0392909216919091179055565b6000600160a060020a038316151561189057600080fd5b600160a060020a033316600090815260016020526040902054829010156118b657600080fd5b600654600160a060020a03331660009081526001602052604090205483900310156118e057600080fd5b600654600160a060020a0384166000908152600160205260409020548301101561190957600080fd5b600754600160a060020a0384166000908152600160205260409020548301111561193257600080fd5b600160a060020a03338116600090815260016020526040808220805486900390559185168152205461196a908363ffffffff61211116565b600160a060020a0380851660008181526001602052604090819020939093559133909116906000805160206121288339815191529085905190815260200160405180910390a350600192915050565b601154600160a060020a031681565b600a5481565b60025433600160a060020a039081169116146119e957600080fd5b600160a060020a03811615156119fe57600080fd5b60128054600160a060020a031916600160a060020a0392909216919091179055565b60025433600160a060020a03908116911614611a3b57600080fd5b600160a060020a0381161515611a5057600080fd5b60108054600160a060020a031916600160a060020a0392909216919091179055565b601654600160a060020a031681565b60045460ff1681565b60025433600160a060020a03908116911614611aa557600080fd5b600160a060020a0381161515611aba57600080fd5b60118054600160a060020a031916600160a060020a0392909216919091179055565b60175474010000000000000000000000000000000000000000900460ff1681565b600b5481565b600160a060020a033381166000908152600360209081526040808320938616835292905290812054611b3b908363ffffffff61211116565b600160a060020a0333811660008181526003602090815260408083209489168084529490915290819020849055919290917f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b92591905190815260200160405180910390a350600192915050565b600160a060020a03918216600090815260036020908152604080832093909416825291909152205490565b60025460009033600160a060020a03908116911614611bf057600080fd5b6004805460ff1610611c0157600080fd5b5060058054600f54600160a060020a0390811660009081526001602081905260408083208054660233e2ffc2c0006509184e72a00090970296909604601781029096019055601154841683528083208054600a601c880204019055601054841683528083208054600387029081019091556012549094168352822080549093019092559092556004805460ff808216909401841660ff19909116178082559192919091161415611ccf57600254600160a060020a03908116600090815260016020526040812055301631600b555b50565b60085460009034620186a002811515611ce757fe5b04905060646009548202811515611cfa57fe5b0481019050600854600014151515611d1157600080fd5b33600160a060020a031682600160a060020a031614151515611d3257600080fd5b600160a060020a03821615611f2457600254600160a060020a0316600090815260016020526040902054606460078302048201901015611d7157600080fd5b600654600160a060020a033316600090815260016020526040902054820160646002840204011015611da257600080fd5b600754600160a060020a033316600090815260016020526040902054820160646002840204011115611dd357600080fd5b600754600160a060020a03831660009081526001602052604090205460646005840204011115611e0257600080fd5b33600160a060020a0316600090815260016020526040902054611e2d90606460028402048301612111565b600160a060020a033381166000908152600160205260408082209390935590841681522054611e629060646005840204612111565b600160a060020a038381166000908152600160205260408082209390935560025490911681522080546064600784028181049285900392909203909255611ea99190611118565b60055560028054600160a060020a033381169291169060008051602061212883398151915290606490850204840160405190815260200160405180910390a3600254600160a060020a0380841691166000805160206121288339815191526064600585020460405190815260200160405180910390a361203d565b600254600160a060020a031660009081526001602052604090205481901015611f4c57600080fd5b600654600160a060020a03331660009081526001602052604090205482011015611f7557600080fd5b600754600160a060020a03331660009081526001602052604090205482011115611f9e57600080fd5b600160a060020a033316600090815260016020526040902054611fc7908263ffffffff61211116565b600160a060020a033381166000908152600160205260408082209390935560025490911681522080548290039055600554612008908263ffffffff61211116565b600555600254600160a060020a0333811691166000805160206121288339815191528360405190815260200160405180910390a35b5050565b600c5481565b60025433600160a060020a0390811691161461206257600080fd5b600160a060020a038116151561207757600080fd5b600254600160a060020a0380831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360028054600160a060020a031916600160a060020a0392909216919091179055565b60025433600160a060020a039081169116146120f057600080fd5b620186a002600755565b600281565b60008282111561210b57fe5b50900390565b60008282018381101561212057fe5b93925050505600ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3efa165627a7a72305820b66a5f359a7329f58af472e0c66a7aa26faa48b8b787afcbdcfabbb379b1910a0029`
+
+// DeploySRTToken deploys a new Ethereum contract, binding an instance of SRTToken to it.
+func DeploySRTToken(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *SRTToken, error) {
+	parsed, err := abi.JSON(strings.NewReader(SRTTokenABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(SRTTokenBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &SRTToken{SRTTokenCaller: SRTTokenCaller{contract: contract}, SRTTokenTransactor: SRTTokenTransactor{contract: contract}}, nil
+}
+
+// SRTToken is an auto generated Go binding around an Ethereum contract.
+type SRTToken struct {
+	SRTTokenCaller     // Read-only binding to the contract
+	SRTTokenTransactor // Write-only binding to the contract
+}
+
+// SRTTokenCaller is an auto generated read-only Go binding around an Ethereum contract.
+type SRTTokenCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// SRTTokenTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type SRTTokenTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// SRTTokenSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type SRTTokenSession struct {
+	Contract     *SRTToken         // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// SRTTokenCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type SRTTokenCallerSession struct {
+	Contract *SRTTokenCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts   // Call options to use throughout this session
+}
+
+// SRTTokenTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type SRTTokenTransactorSession struct {
+	Contract     *SRTTokenTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+}
+
+// SRTTokenRaw is an auto generated low-level Go binding around an Ethereum contract.
+type SRTTokenRaw struct {
+	Contract *SRTToken // Generic contract binding to access the raw methods on
+}
+
+// SRTTokenCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type SRTTokenCallerRaw struct {
+	Contract *SRTTokenCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// SRTTokenTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type SRTTokenTransactorRaw struct {
+	Contract *SRTTokenTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewSRTToken creates a new instance of SRTToken, bound to a specific deployed contract.
+func NewSRTToken(address common.Address, backend bind.ContractBackend) (*SRTToken, error) {
+	contract, err := bindSRTToken(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &SRTToken{SRTTokenCaller: SRTTokenCaller{contract: contract}, SRTTokenTransactor: SRTTokenTransactor{contract: contract}}, nil
+}
+
+// NewSRTTokenCaller creates a new read-only instance of SRTToken, bound to a specific deployed contract.
+func NewSRTTokenCaller(address common.Address, caller bind.ContractCaller) (*SRTTokenCaller, error) {
+	contract, err := bindSRTToken(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &SRTTokenCaller{contract: contract}, nil
+}
+
+// NewSRTTokenTransactor creates a new write-only instance of SRTToken, bound to a specific deployed contract.
+func NewSRTTokenTransactor(address common.Address, transactor bind.ContractTransactor) (*SRTTokenTransactor, error) {
+	contract, err := bindSRTToken(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &SRTTokenTransactor{contract: contract}, nil
+}
+
+// bindSRTToken binds a generic wrapper to an already deployed contract.
+func bindSRTToken(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(SRTTokenABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_SRTToken *SRTTokenRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _SRTToken.Contract.SRTTokenCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_SRTToken *SRTTokenRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SRTToken.Contract.SRTTokenTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_SRTToken *SRTTokenRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _SRTToken.Contract.SRTTokenTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_SRTToken *SRTTokenCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _SRTToken.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_SRTToken *SRTTokenTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SRTToken.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_SRTToken *SRTTokenTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _SRTToken.Contract.contract.Transact(opts, method, params...)
+}
+
+// INITIAL_SUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
+//
+// Solidity: function INITIAL_SUPPLY() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) INITIAL_SUPPLY(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "INITIAL_SUPPLY")
+	return *ret0, err
+}
+
+// INITIAL_SUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
+//
+// Solidity: function INITIAL_SUPPLY() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) INITIAL_SUPPLY() (*big.Int, error) {
+	return _SRTToken.Contract.INITIAL_SUPPLY(&_SRTToken.CallOpts)
+}
+
+// INITIAL_SUPPLY is a free data retrieval call binding the contract method 0x2ff2e9dc.
+//
+// Solidity: function INITIAL_SUPPLY() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) INITIAL_SUPPLY() (*big.Int, error) {
+	return _SRTToken.Contract.INITIAL_SUPPLY(&_SRTToken.CallOpts)
+}
+
+// MULTIPLIER is a free data retrieval call binding the contract method 0x059f8b16.
+//
+// Solidity: function MULTIPLIER() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) MULTIPLIER(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "MULTIPLIER")
+	return *ret0, err
+}
+
+// MULTIPLIER is a free data retrieval call binding the contract method 0x059f8b16.
+//
+// Solidity: function MULTIPLIER() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) MULTIPLIER() (*big.Int, error) {
+	return _SRTToken.Contract.MULTIPLIER(&_SRTToken.CallOpts)
+}
+
+// MULTIPLIER is a free data retrieval call binding the contract method 0x059f8b16.
+//
+// Solidity: function MULTIPLIER() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) MULTIPLIER() (*big.Int, error) {
+	return _SRTToken.Contract.MULTIPLIER(&_SRTToken.CallOpts)
+}
+
+// STAGE1 is a free data retrieval call binding the contract method 0x70b6d31b.
+//
+// Solidity: function STAGE1() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) STAGE1(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "STAGE1")
+	return *ret0, err
+}
+
+// STAGE1 is a free data retrieval call binding the contract method 0x70b6d31b.
+//
+// Solidity: function STAGE1() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) STAGE1() (uint8, error) {
+	return _SRTToken.Contract.STAGE1(&_SRTToken.CallOpts)
+}
+
+// STAGE1 is a free data retrieval call binding the contract method 0x70b6d31b.
+//
+// Solidity: function STAGE1() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) STAGE1() (uint8, error) {
+	return _SRTToken.Contract.STAGE1(&_SRTToken.CallOpts)
+}
+
+// STAGE2 is a free data retrieval call binding the contract method 0x08bbf544.
+//
+// Solidity: function STAGE2() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) STAGE2(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "STAGE2")
+	return *ret0, err
+}
+
+// STAGE2 is a free data retrieval call binding the contract method 0x08bbf544.
+//
+// Solidity: function STAGE2() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) STAGE2() (uint8, error) {
+	return _SRTToken.Contract.STAGE2(&_SRTToken.CallOpts)
+}
+
+// STAGE2 is a free data retrieval call binding the contract method 0x08bbf544.
+//
+// Solidity: function STAGE2() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) STAGE2() (uint8, error) {
+	return _SRTToken.Contract.STAGE2(&_SRTToken.CallOpts)
+}
+
+// STAGE3 is a free data retrieval call binding the contract method 0xfeb7efa0.
+//
+// Solidity: function STAGE3() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) STAGE3(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "STAGE3")
+	return *ret0, err
+}
+
+// STAGE3 is a free data retrieval call binding the contract method 0xfeb7efa0.
+//
+// Solidity: function STAGE3() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) STAGE3() (uint8, error) {
+	return _SRTToken.Contract.STAGE3(&_SRTToken.CallOpts)
+}
+
+// STAGE3 is a free data retrieval call binding the contract method 0xfeb7efa0.
+//
+// Solidity: function STAGE3() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) STAGE3() (uint8, error) {
+	return _SRTToken.Contract.STAGE3(&_SRTToken.CallOpts)
+}
+
+// STAGE4 is a free data retrieval call binding the contract method 0x7936c5e5.
+//
+// Solidity: function STAGE4() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) STAGE4(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "STAGE4")
+	return *ret0, err
+}
+
+// STAGE4 is a free data retrieval call binding the contract method 0x7936c5e5.
+//
+// Solidity: function STAGE4() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) STAGE4() (uint8, error) {
+	return _SRTToken.Contract.STAGE4(&_SRTToken.CallOpts)
+}
+
+// STAGE4 is a free data retrieval call binding the contract method 0x7936c5e5.
+//
+// Solidity: function STAGE4() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) STAGE4() (uint8, error) {
+	return _SRTToken.Contract.STAGE4(&_SRTToken.CallOpts)
+}
+
+// STAGE5 is a free data retrieval call binding the contract method 0x88568fd8.
+//
+// Solidity: function STAGE5() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) STAGE5(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "STAGE5")
+	return *ret0, err
+}
+
+// STAGE5 is a free data retrieval call binding the contract method 0x88568fd8.
+//
+// Solidity: function STAGE5() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) STAGE5() (uint8, error) {
+	return _SRTToken.Contract.STAGE5(&_SRTToken.CallOpts)
+}
+
+// STAGE5 is a free data retrieval call binding the contract method 0x88568fd8.
+//
+// Solidity: function STAGE5() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) STAGE5() (uint8, error) {
+	return _SRTToken.Contract.STAGE5(&_SRTToken.CallOpts)
+}
+
+// TOKENS_FOR_SELLE is a free data retrieval call binding the contract method 0x730ee22a.
+//
+// Solidity: function TOKENS_FOR_SELLE() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TOKENS_FOR_SELLE(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "TOKENS_FOR_SELLE")
+	return *ret0, err
+}
+
+// TOKENS_FOR_SELLE is a free data retrieval call binding the contract method 0x730ee22a.
+//
+// Solidity: function TOKENS_FOR_SELLE() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TOKENS_FOR_SELLE() (*big.Int, error) {
+	return _SRTToken.Contract.TOKENS_FOR_SELLE(&_SRTToken.CallOpts)
+}
+
+// TOKENS_FOR_SELLE is a free data retrieval call binding the contract method 0x730ee22a.
+//
+// Solidity: function TOKENS_FOR_SELLE() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TOKENS_FOR_SELLE() (*big.Int, error) {
+	return _SRTToken.Contract.TOKENS_FOR_SELLE(&_SRTToken.CallOpts)
+}
+
+// AdvisoryBoard is a free data retrieval call binding the contract method 0xaa674836.
+//
+// Solidity: function advisoryBoard() constant returns(address)
+func (_SRTToken *SRTTokenCaller) AdvisoryBoard(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "advisoryBoard")
+	return *ret0, err
+}
+
+// AdvisoryBoard is a free data retrieval call binding the contract method 0xaa674836.
+//
+// Solidity: function advisoryBoard() constant returns(address)
+func (_SRTToken *SRTTokenSession) AdvisoryBoard() (common.Address, error) {
+	return _SRTToken.Contract.AdvisoryBoard(&_SRTToken.CallOpts)
+}
+
+// AdvisoryBoard is a free data retrieval call binding the contract method 0xaa674836.
+//
+// Solidity: function advisoryBoard() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) AdvisoryBoard() (common.Address, error) {
+	return _SRTToken.Contract.AdvisoryBoard(&_SRTToken.CallOpts)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(_owner address, _spender address) constant returns(remaining uint256)
+func (_SRTToken *SRTTokenCaller) Allowance(opts *bind.CallOpts, _owner common.Address, _spender common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "allowance", _owner, _spender)
+	return *ret0, err
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(_owner address, _spender address) constant returns(remaining uint256)
+func (_SRTToken *SRTTokenSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
+	return _SRTToken.Contract.Allowance(&_SRTToken.CallOpts, _owner, _spender)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(_owner address, _spender address) constant returns(remaining uint256)
+func (_SRTToken *SRTTokenCallerSession) Allowance(_owner common.Address, _spender common.Address) (*big.Int, error) {
+	return _SRTToken.Contract.Allowance(&_SRTToken.CallOpts, _owner, _spender)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_SRTToken *SRTTokenCaller) BalanceOf(opts *bind.CallOpts, _owner common.Address) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "balanceOf", _owner)
+	return *ret0, err
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_SRTToken *SRTTokenSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _SRTToken.Contract.BalanceOf(&_SRTToken.CallOpts, _owner)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(_owner address) constant returns(balance uint256)
+func (_SRTToken *SRTTokenCallerSession) BalanceOf(_owner common.Address) (*big.Int, error) {
+	return _SRTToken.Contract.BalanceOf(&_SRTToken.CallOpts, _owner)
+}
+
+// Benefactor is a free data retrieval call binding the contract method 0x8a81694c.
+//
+// Solidity: function benefactor() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Benefactor(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "benefactor")
+	return *ret0, err
+}
+
+// Benefactor is a free data retrieval call binding the contract method 0x8a81694c.
+//
+// Solidity: function benefactor() constant returns(address)
+func (_SRTToken *SRTTokenSession) Benefactor() (common.Address, error) {
+	return _SRTToken.Contract.Benefactor(&_SRTToken.CallOpts)
+}
+
+// Benefactor is a free data retrieval call binding the contract method 0x8a81694c.
+//
+// Solidity: function benefactor() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Benefactor() (common.Address, error) {
+	return _SRTToken.Contract.Benefactor(&_SRTToken.CallOpts)
+}
+
+// Bounty is a free data retrieval call binding the contract method 0x943dfef1.
+//
+// Solidity: function bounty() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Bounty(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "bounty")
+	return *ret0, err
+}
+
+// Bounty is a free data retrieval call binding the contract method 0x943dfef1.
+//
+// Solidity: function bounty() constant returns(address)
+func (_SRTToken *SRTTokenSession) Bounty() (common.Address, error) {
+	return _SRTToken.Contract.Bounty(&_SRTToken.CallOpts)
+}
+
+// Bounty is a free data retrieval call binding the contract method 0x943dfef1.
+//
+// Solidity: function bounty() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Bounty() (common.Address, error) {
+	return _SRTToken.Contract.Bounty(&_SRTToken.CallOpts)
+}
+
+// BuyDiscount is a free data retrieval call binding the contract method 0x6408dc49.
+//
+// Solidity: function buyDiscount() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) BuyDiscount(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "buyDiscount")
+	return *ret0, err
+}
+
+// BuyDiscount is a free data retrieval call binding the contract method 0x6408dc49.
+//
+// Solidity: function buyDiscount() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) BuyDiscount() (*big.Int, error) {
+	return _SRTToken.Contract.BuyDiscount(&_SRTToken.CallOpts)
+}
+
+// BuyDiscount is a free data retrieval call binding the contract method 0x6408dc49.
+//
+// Solidity: function buyDiscount() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) BuyDiscount() (*big.Int, error) {
+	return _SRTToken.Contract.BuyDiscount(&_SRTToken.CallOpts)
+}
+
+// Company is a free data retrieval call binding the contract method 0x6904c94d.
+//
+// Solidity: function company() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Company(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "company")
+	return *ret0, err
+}
+
+// Company is a free data retrieval call binding the contract method 0x6904c94d.
+//
+// Solidity: function company() constant returns(address)
+func (_SRTToken *SRTTokenSession) Company() (common.Address, error) {
+	return _SRTToken.Contract.Company(&_SRTToken.CallOpts)
+}
+
+// Company is a free data retrieval call binding the contract method 0x6904c94d.
+//
+// Solidity: function company() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Company() (common.Address, error) {
+	return _SRTToken.Contract.Company(&_SRTToken.CallOpts)
+}
+
+// Consultants is a free data retrieval call binding the contract method 0x8da78338.
+//
+// Solidity: function consultants() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Consultants(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "consultants")
+	return *ret0, err
+}
+
+// Consultants is a free data retrieval call binding the contract method 0x8da78338.
+//
+// Solidity: function consultants() constant returns(address)
+func (_SRTToken *SRTTokenSession) Consultants() (common.Address, error) {
+	return _SRTToken.Contract.Consultants(&_SRTToken.CallOpts)
+}
+
+// Consultants is a free data retrieval call binding the contract method 0x8da78338.
+//
+// Solidity: function consultants() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Consultants() (common.Address, error) {
+	return _SRTToken.Contract.Consultants(&_SRTToken.CallOpts)
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "decimals")
+	return *ret0, err
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) Decimals() (uint8, error) {
+	return _SRTToken.Contract.Decimals(&_SRTToken.CallOpts)
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) Decimals() (uint8, error) {
+	return _SRTToken.Contract.Decimals(&_SRTToken.CallOpts)
+}
+
+// Escrow1 is a free data retrieval call binding the contract method 0x6a5058c3.
+//
+// Solidity: function escrow1() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Escrow1(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow1")
+	return *ret0, err
+}
+
+// Escrow1 is a free data retrieval call binding the contract method 0x6a5058c3.
+//
+// Solidity: function escrow1() constant returns(address)
+func (_SRTToken *SRTTokenSession) Escrow1() (common.Address, error) {
+	return _SRTToken.Contract.Escrow1(&_SRTToken.CallOpts)
+}
+
+// Escrow1 is a free data retrieval call binding the contract method 0x6a5058c3.
+//
+// Solidity: function escrow1() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Escrow1() (common.Address, error) {
+	return _SRTToken.Contract.Escrow1(&_SRTToken.CallOpts)
+}
+
+// Escrow1Accepted is a free data retrieval call binding the contract method 0xc7b5be1c.
+//
+// Solidity: function escrow1Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCaller) Escrow1Accepted(opts *bind.CallOpts) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow1Accepted")
+	return *ret0, err
+}
+
+// Escrow1Accepted is a free data retrieval call binding the contract method 0xc7b5be1c.
+//
+// Solidity: function escrow1Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenSession) Escrow1Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow1Accepted(&_SRTToken.CallOpts)
+}
+
+// Escrow1Accepted is a free data retrieval call binding the contract method 0xc7b5be1c.
+//
+// Solidity: function escrow1Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCallerSession) Escrow1Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow1Accepted(&_SRTToken.CallOpts)
+}
+
+// Escrow2 is a free data retrieval call binding the contract method 0x0d6b55cf.
+//
+// Solidity: function escrow2() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Escrow2(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow2")
+	return *ret0, err
+}
+
+// Escrow2 is a free data retrieval call binding the contract method 0x0d6b55cf.
+//
+// Solidity: function escrow2() constant returns(address)
+func (_SRTToken *SRTTokenSession) Escrow2() (common.Address, error) {
+	return _SRTToken.Contract.Escrow2(&_SRTToken.CallOpts)
+}
+
+// Escrow2 is a free data retrieval call binding the contract method 0x0d6b55cf.
+//
+// Solidity: function escrow2() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Escrow2() (common.Address, error) {
+	return _SRTToken.Contract.Escrow2(&_SRTToken.CallOpts)
+}
+
+// Escrow2Accepted is a free data retrieval call binding the contract method 0x9543b4b0.
+//
+// Solidity: function escrow2Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCaller) Escrow2Accepted(opts *bind.CallOpts) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow2Accepted")
+	return *ret0, err
+}
+
+// Escrow2Accepted is a free data retrieval call binding the contract method 0x9543b4b0.
+//
+// Solidity: function escrow2Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenSession) Escrow2Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow2Accepted(&_SRTToken.CallOpts)
+}
+
+// Escrow2Accepted is a free data retrieval call binding the contract method 0x9543b4b0.
+//
+// Solidity: function escrow2Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCallerSession) Escrow2Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow2Accepted(&_SRTToken.CallOpts)
+}
+
+// Escrow3 is a free data retrieval call binding the contract method 0xbf1b70b9.
+//
+// Solidity: function escrow3() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Escrow3(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow3")
+	return *ret0, err
+}
+
+// Escrow3 is a free data retrieval call binding the contract method 0xbf1b70b9.
+//
+// Solidity: function escrow3() constant returns(address)
+func (_SRTToken *SRTTokenSession) Escrow3() (common.Address, error) {
+	return _SRTToken.Contract.Escrow3(&_SRTToken.CallOpts)
+}
+
+// Escrow3 is a free data retrieval call binding the contract method 0xbf1b70b9.
+//
+// Solidity: function escrow3() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Escrow3() (common.Address, error) {
+	return _SRTToken.Contract.Escrow3(&_SRTToken.CallOpts)
+}
+
+// Escrow3Accepted is a free data retrieval call binding the contract method 0x857de1f6.
+//
+// Solidity: function escrow3Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCaller) Escrow3Accepted(opts *bind.CallOpts) (bool, error) {
+	var (
+		ret0 = new(bool)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "escrow3Accepted")
+	return *ret0, err
+}
+
+// Escrow3Accepted is a free data retrieval call binding the contract method 0x857de1f6.
+//
+// Solidity: function escrow3Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenSession) Escrow3Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow3Accepted(&_SRTToken.CallOpts)
+}
+
+// Escrow3Accepted is a free data retrieval call binding the contract method 0x857de1f6.
+//
+// Solidity: function escrow3Accepted() constant returns(bool)
+func (_SRTToken *SRTTokenCallerSession) Escrow3Accepted() (bool, error) {
+	return _SRTToken.Contract.Escrow3Accepted(&_SRTToken.CallOpts)
+}
+
+// Infrostructure is a free data retrieval call binding the contract method 0x666aa3f5.
+//
+// Solidity: function infrostructure() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Infrostructure(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "infrostructure")
+	return *ret0, err
+}
+
+// Infrostructure is a free data retrieval call binding the contract method 0x666aa3f5.
+//
+// Solidity: function infrostructure() constant returns(address)
+func (_SRTToken *SRTTokenSession) Infrostructure() (common.Address, error) {
+	return _SRTToken.Contract.Infrostructure(&_SRTToken.CallOpts)
+}
+
+// Infrostructure is a free data retrieval call binding the contract method 0x666aa3f5.
+//
+// Solidity: function infrostructure() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Infrostructure() (common.Address, error) {
+	return _SRTToken.Contract.Infrostructure(&_SRTToken.CallOpts)
+}
+
+// MaxTokensAmount is a free data retrieval call binding the contract method 0x0a384665.
+//
+// Solidity: function maxTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) MaxTokensAmount(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "maxTokensAmount")
+	return *ret0, err
+}
+
+// MaxTokensAmount is a free data retrieval call binding the contract method 0x0a384665.
+//
+// Solidity: function maxTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) MaxTokensAmount() (*big.Int, error) {
+	return _SRTToken.Contract.MaxTokensAmount(&_SRTToken.CallOpts)
+}
+
+// MaxTokensAmount is a free data retrieval call binding the contract method 0x0a384665.
+//
+// Solidity: function maxTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) MaxTokensAmount() (*big.Int, error) {
+	return _SRTToken.Contract.MaxTokensAmount(&_SRTToken.CallOpts)
+}
+
+// MigrationAgent is a free data retrieval call binding the contract method 0x8328dbcd.
+//
+// Solidity: function migrationAgent() constant returns(address)
+func (_SRTToken *SRTTokenCaller) MigrationAgent(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "migrationAgent")
+	return *ret0, err
+}
+
+// MigrationAgent is a free data retrieval call binding the contract method 0x8328dbcd.
+//
+// Solidity: function migrationAgent() constant returns(address)
+func (_SRTToken *SRTTokenSession) MigrationAgent() (common.Address, error) {
+	return _SRTToken.Contract.MigrationAgent(&_SRTToken.CallOpts)
+}
+
+// MigrationAgent is a free data retrieval call binding the contract method 0x8328dbcd.
+//
+// Solidity: function migrationAgent() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) MigrationAgent() (common.Address, error) {
+	return _SRTToken.Contract.MigrationAgent(&_SRTToken.CallOpts)
+}
+
+// MinTokensAmount is a free data retrieval call binding the contract method 0x60423455.
+//
+// Solidity: function minTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) MinTokensAmount(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "minTokensAmount")
+	return *ret0, err
+}
+
+// MinTokensAmount is a free data retrieval call binding the contract method 0x60423455.
+//
+// Solidity: function minTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) MinTokensAmount() (*big.Int, error) {
+	return _SRTToken.Contract.MinTokensAmount(&_SRTToken.CallOpts)
+}
+
+// MinTokensAmount is a free data retrieval call binding the contract method 0x60423455.
+//
+// Solidity: function minTokensAmount() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) MinTokensAmount() (*big.Int, error) {
+	return _SRTToken.Contract.MinTokensAmount(&_SRTToken.CallOpts)
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_SRTToken *SRTTokenCaller) Name(opts *bind.CallOpts) (string, error) {
+	var (
+		ret0 = new(string)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "name")
+	return *ret0, err
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_SRTToken *SRTTokenSession) Name() (string, error) {
+	return _SRTToken.Contract.Name(&_SRTToken.CallOpts)
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() constant returns(string)
+func (_SRTToken *SRTTokenCallerSession) Name() (string, error) {
+	return _SRTToken.Contract.Name(&_SRTToken.CallOpts)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_SRTToken *SRTTokenCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var (
+		ret0 = new(common.Address)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "owner")
+	return *ret0, err
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_SRTToken *SRTTokenSession) Owner() (common.Address, error) {
+	return _SRTToken.Contract.Owner(&_SRTToken.CallOpts)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() constant returns(address)
+func (_SRTToken *SRTTokenCallerSession) Owner() (common.Address, error) {
+	return _SRTToken.Contract.Owner(&_SRTToken.CallOpts)
+}
+
+// RequestedWithdrawal is a free data retrieval call binding the contract method 0x0791250a.
+//
+// Solidity: function requestedWithdrawal() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) RequestedWithdrawal(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "requestedWithdrawal")
+	return *ret0, err
+}
+
+// RequestedWithdrawal is a free data retrieval call binding the contract method 0x0791250a.
+//
+// Solidity: function requestedWithdrawal() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) RequestedWithdrawal() (*big.Int, error) {
+	return _SRTToken.Contract.RequestedWithdrawal(&_SRTToken.CallOpts)
+}
+
+// RequestedWithdrawal is a free data retrieval call binding the contract method 0x0791250a.
+//
+// Solidity: function requestedWithdrawal() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) RequestedWithdrawal() (*big.Int, error) {
+	return _SRTToken.Contract.RequestedWithdrawal(&_SRTToken.CallOpts)
+}
+
+// Stage is a free data retrieval call binding the contract method 0xc040e6b8.
+//
+// Solidity: function stage() constant returns(uint8)
+func (_SRTToken *SRTTokenCaller) Stage(opts *bind.CallOpts) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "stage")
+	return *ret0, err
+}
+
+// Stage is a free data retrieval call binding the contract method 0xc040e6b8.
+//
+// Solidity: function stage() constant returns(uint8)
+func (_SRTToken *SRTTokenSession) Stage() (uint8, error) {
+	return _SRTToken.Contract.Stage(&_SRTToken.CallOpts)
+}
+
+// Stage is a free data retrieval call binding the contract method 0xc040e6b8.
+//
+// Solidity: function stage() constant returns(uint8)
+func (_SRTToken *SRTTokenCallerSession) Stage() (uint8, error) {
+	return _SRTToken.Contract.Stage(&_SRTToken.CallOpts)
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() constant returns(string)
+func (_SRTToken *SRTTokenCaller) Symbol(opts *bind.CallOpts) (string, error) {
+	var (
+		ret0 = new(string)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "symbol")
+	return *ret0, err
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() constant returns(string)
+func (_SRTToken *SRTTokenSession) Symbol() (string, error) {
+	return _SRTToken.Contract.Symbol(&_SRTToken.CallOpts)
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() constant returns(string)
+func (_SRTToken *SRTTokenCallerSession) Symbol() (string, error) {
+	return _SRTToken.Contract.Symbol(&_SRTToken.CallOpts)
+}
+
+// TimeCreated is a free data retrieval call binding the contract method 0xf1653f6e.
+//
+// Solidity: function timeCreated() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TimeCreated(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "timeCreated")
+	return *ret0, err
+}
+
+// TimeCreated is a free data retrieval call binding the contract method 0xf1653f6e.
+//
+// Solidity: function timeCreated() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TimeCreated() (*big.Int, error) {
+	return _SRTToken.Contract.TimeCreated(&_SRTToken.CallOpts)
+}
+
+// TimeCreated is a free data retrieval call binding the contract method 0xf1653f6e.
+//
+// Solidity: function timeCreated() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TimeCreated() (*big.Int, error) {
+	return _SRTToken.Contract.TimeCreated(&_SRTToken.CallOpts)
+}
+
+// TokenPrice is a free data retrieval call binding the contract method 0x7ff9b596.
+//
+// Solidity: function tokenPrice() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TokenPrice(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "tokenPrice")
+	return *ret0, err
+}
+
+// TokenPrice is a free data retrieval call binding the contract method 0x7ff9b596.
+//
+// Solidity: function tokenPrice() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TokenPrice() (*big.Int, error) {
+	return _SRTToken.Contract.TokenPrice(&_SRTToken.CallOpts)
+}
+
+// TokenPrice is a free data retrieval call binding the contract method 0x7ff9b596.
+//
+// Solidity: function tokenPrice() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TokenPrice() (*big.Int, error) {
+	return _SRTToken.Contract.TokenPrice(&_SRTToken.CallOpts)
+}
+
+// TokensSoldInCurrentStage is a free data retrieval call binding the contract method 0x888fe9aa.
+//
+// Solidity: function tokensSoldInCurrentStage() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TokensSoldInCurrentStage(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "tokensSoldInCurrentStage")
+	return *ret0, err
+}
+
+// TokensSoldInCurrentStage is a free data retrieval call binding the contract method 0x888fe9aa.
+//
+// Solidity: function tokensSoldInCurrentStage() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TokensSoldInCurrentStage() (*big.Int, error) {
+	return _SRTToken.Contract.TokensSoldInCurrentStage(&_SRTToken.CallOpts)
+}
+
+// TokensSoldInCurrentStage is a free data retrieval call binding the contract method 0x888fe9aa.
+//
+// Solidity: function tokensSoldInCurrentStage() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TokensSoldInCurrentStage() (*big.Int, error) {
+	return _SRTToken.Contract.TokensSoldInCurrentStage(&_SRTToken.CallOpts)
+}
+
+// TotalEarnedEthBalance is a free data retrieval call binding the contract method 0xd4cda731.
+//
+// Solidity: function totalEarnedEthBalance() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TotalEarnedEthBalance(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "totalEarnedEthBalance")
+	return *ret0, err
+}
+
+// TotalEarnedEthBalance is a free data retrieval call binding the contract method 0xd4cda731.
+//
+// Solidity: function totalEarnedEthBalance() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TotalEarnedEthBalance() (*big.Int, error) {
+	return _SRTToken.Contract.TotalEarnedEthBalance(&_SRTToken.CallOpts)
+}
+
+// TotalEarnedEthBalance is a free data retrieval call binding the contract method 0xd4cda731.
+//
+// Solidity: function totalEarnedEthBalance() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TotalEarnedEthBalance() (*big.Int, error) {
+	return _SRTToken.Contract.TotalEarnedEthBalance(&_SRTToken.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "totalSupply")
+	return *ret0, err
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TotalSupply() (*big.Int, error) {
+	return _SRTToken.Contract.TotalSupply(&_SRTToken.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TotalSupply() (*big.Int, error) {
+	return _SRTToken.Contract.TotalSupply(&_SRTToken.CallOpts)
+}
+
+// TotalWithdrawalAmountInControl is a free data retrieval call binding the contract method 0xbb626f57.
+//
+// Solidity: function totalWithdrawalAmountInControl() constant returns(uint256)
+func (_SRTToken *SRTTokenCaller) TotalWithdrawalAmountInControl(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _SRTToken.contract.Call(opts, out, "totalWithdrawalAmountInControl")
+	return *ret0, err
+}
+
+// TotalWithdrawalAmountInControl is a free data retrieval call binding the contract method 0xbb626f57.
+//
+// Solidity: function totalWithdrawalAmountInControl() constant returns(uint256)
+func (_SRTToken *SRTTokenSession) TotalWithdrawalAmountInControl() (*big.Int, error) {
+	return _SRTToken.Contract.TotalWithdrawalAmountInControl(&_SRTToken.CallOpts)
+}
+
+// TotalWithdrawalAmountInControl is a free data retrieval call binding the contract method 0xbb626f57.
+//
+// Solidity: function totalWithdrawalAmountInControl() constant returns(uint256)
+func (_SRTToken *SRTTokenCallerSession) TotalWithdrawalAmountInControl() (*big.Int, error) {
+	return _SRTToken.Contract.TotalWithdrawalAmountInControl(&_SRTToken.CallOpts)
+}
+
+// AcceptWithdrawal is a paid mutator transaction binding the contract method 0x14438428.
+//
+// Solidity: function acceptWithdrawal() returns(bool)
+func (_SRTToken *SRTTokenTransactor) AcceptWithdrawal(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "acceptWithdrawal")
+}
+
+// AcceptWithdrawal is a paid mutator transaction binding the contract method 0x14438428.
+//
+// Solidity: function acceptWithdrawal() returns(bool)
+func (_SRTToken *SRTTokenSession) AcceptWithdrawal() (*types.Transaction, error) {
+	return _SRTToken.Contract.AcceptWithdrawal(&_SRTToken.TransactOpts)
+}
+
+// AcceptWithdrawal is a paid mutator transaction binding the contract method 0x14438428.
+//
+// Solidity: function acceptWithdrawal() returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) AcceptWithdrawal() (*types.Transaction, error) {
+	return _SRTToken.Contract.AcceptWithdrawal(&_SRTToken.TransactOpts)
+}
+
+// AddTokens is a paid mutator transaction binding the contract method 0x27065d7c.
+//
+// Solidity: function addTokens(_to address, _value uint256, _referal address) returns(bool)
+func (_SRTToken *SRTTokenTransactor) AddTokens(opts *bind.TransactOpts, _to common.Address, _value *big.Int, _referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "addTokens", _to, _value, _referal)
+}
+
+// AddTokens is a paid mutator transaction binding the contract method 0x27065d7c.
+//
+// Solidity: function addTokens(_to address, _value uint256, _referal address) returns(bool)
+func (_SRTToken *SRTTokenSession) AddTokens(_to common.Address, _value *big.Int, _referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.AddTokens(&_SRTToken.TransactOpts, _to, _value, _referal)
+}
+
+// AddTokens is a paid mutator transaction binding the contract method 0x27065d7c.
+//
+// Solidity: function addTokens(_to address, _value uint256, _referal address) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) AddTokens(_to common.Address, _value *big.Int, _referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.AddTokens(&_SRTToken.TransactOpts, _to, _value, _referal)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(_spender address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactor) Approve(opts *bind.TransactOpts, _spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "approve", _spender, _value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(_spender address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.Approve(&_SRTToken.TransactOpts, _spender, _value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(_spender address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) Approve(_spender common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.Approve(&_SRTToken.TransactOpts, _spender, _value)
+}
+
+// Buy is a paid mutator transaction binding the contract method 0xf088d547.
+//
+// Solidity: function buy(_referal address) returns()
+func (_SRTToken *SRTTokenTransactor) Buy(opts *bind.TransactOpts, _referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "buy", _referal)
+}
+
+// Buy is a paid mutator transaction binding the contract method 0xf088d547.
+//
+// Solidity: function buy(_referal address) returns()
+func (_SRTToken *SRTTokenSession) Buy(_referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.Buy(&_SRTToken.TransactOpts, _referal)
+}
+
+// Buy is a paid mutator transaction binding the contract method 0xf088d547.
+//
+// Solidity: function buy(_referal address) returns()
+func (_SRTToken *SRTTokenTransactorSession) Buy(_referal common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.Buy(&_SRTToken.TransactOpts, _referal)
+}
+
+// DecreaseApproval is a paid mutator transaction binding the contract method 0x66188463.
+//
+// Solidity: function decreaseApproval(_spender address, _subtractedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenTransactor) DecreaseApproval(opts *bind.TransactOpts, _spender common.Address, _subtractedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "decreaseApproval", _spender, _subtractedValue)
+}
+
+// DecreaseApproval is a paid mutator transaction binding the contract method 0x66188463.
+//
+// Solidity: function decreaseApproval(_spender address, _subtractedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenSession) DecreaseApproval(_spender common.Address, _subtractedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.DecreaseApproval(&_SRTToken.TransactOpts, _spender, _subtractedValue)
+}
+
+// DecreaseApproval is a paid mutator transaction binding the contract method 0x66188463.
+//
+// Solidity: function decreaseApproval(_spender address, _subtractedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenTransactorSession) DecreaseApproval(_spender common.Address, _subtractedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.DecreaseApproval(&_SRTToken.TransactOpts, _spender, _subtractedValue)
+}
+
+// IncreaseApproval is a paid mutator transaction binding the contract method 0xd73dd623.
+//
+// Solidity: function increaseApproval(_spender address, _addedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenTransactor) IncreaseApproval(opts *bind.TransactOpts, _spender common.Address, _addedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "increaseApproval", _spender, _addedValue)
+}
+
+// IncreaseApproval is a paid mutator transaction binding the contract method 0xd73dd623.
+//
+// Solidity: function increaseApproval(_spender address, _addedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenSession) IncreaseApproval(_spender common.Address, _addedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.IncreaseApproval(&_SRTToken.TransactOpts, _spender, _addedValue)
+}
+
+// IncreaseApproval is a paid mutator transaction binding the contract method 0xd73dd623.
+//
+// Solidity: function increaseApproval(_spender address, _addedValue uint256) returns(success bool)
+func (_SRTToken *SRTTokenTransactorSession) IncreaseApproval(_spender common.Address, _addedValue *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.IncreaseApproval(&_SRTToken.TransactOpts, _spender, _addedValue)
+}
+
+// Migrate is a paid mutator transaction binding the contract method 0x8fd3ab80.
+//
+// Solidity: function migrate() returns()
+func (_SRTToken *SRTTokenTransactor) Migrate(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "migrate")
+}
+
+// Migrate is a paid mutator transaction binding the contract method 0x8fd3ab80.
+//
+// Solidity: function migrate() returns()
+func (_SRTToken *SRTTokenSession) Migrate() (*types.Transaction, error) {
+	return _SRTToken.Contract.Migrate(&_SRTToken.TransactOpts)
+}
+
+// Migrate is a paid mutator transaction binding the contract method 0x8fd3ab80.
+//
+// Solidity: function migrate() returns()
+func (_SRTToken *SRTTokenTransactorSession) Migrate() (*types.Transaction, error) {
+	return _SRTToken.Contract.Migrate(&_SRTToken.TransactOpts)
+}
+
+// NextStage is a paid mutator transaction binding the contract method 0xee3743ab.
+//
+// Solidity: function nextStage() returns()
+func (_SRTToken *SRTTokenTransactor) NextStage(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "nextStage")
+}
+
+// NextStage is a paid mutator transaction binding the contract method 0xee3743ab.
+//
+// Solidity: function nextStage() returns()
+func (_SRTToken *SRTTokenSession) NextStage() (*types.Transaction, error) {
+	return _SRTToken.Contract.NextStage(&_SRTToken.TransactOpts)
+}
+
+// NextStage is a paid mutator transaction binding the contract method 0xee3743ab.
+//
+// Solidity: function nextStage() returns()
+func (_SRTToken *SRTTokenTransactorSession) NextStage() (*types.Transaction, error) {
+	return _SRTToken.Contract.NextStage(&_SRTToken.TransactOpts)
+}
+
+// PayForLicense is a paid mutator transaction binding the contract method 0x5f852d25.
+//
+// Solidity: function payForLicense(_value uint256, _receiptId string) returns(bool)
+func (_SRTToken *SRTTokenTransactor) PayForLicense(opts *bind.TransactOpts, _value *big.Int, _receiptId string) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "payForLicense", _value, _receiptId)
+}
+
+// PayForLicense is a paid mutator transaction binding the contract method 0x5f852d25.
+//
+// Solidity: function payForLicense(_value uint256, _receiptId string) returns(bool)
+func (_SRTToken *SRTTokenSession) PayForLicense(_value *big.Int, _receiptId string) (*types.Transaction, error) {
+	return _SRTToken.Contract.PayForLicense(&_SRTToken.TransactOpts, _value, _receiptId)
+}
+
+// PayForLicense is a paid mutator transaction binding the contract method 0x5f852d25.
+//
+// Solidity: function payForLicense(_value uint256, _receiptId string) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) PayForLicense(_value *big.Int, _receiptId string) (*types.Transaction, error) {
+	return _SRTToken.Contract.PayForLicense(&_SRTToken.TransactOpts, _value, _receiptId)
+}
+
+// RequestWithdrawal is a paid mutator transaction binding the contract method 0x9ee679e8.
+//
+// Solidity: function requestWithdrawal(_value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactor) RequestWithdrawal(opts *bind.TransactOpts, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "requestWithdrawal", _value)
+}
+
+// RequestWithdrawal is a paid mutator transaction binding the contract method 0x9ee679e8.
+//
+// Solidity: function requestWithdrawal(_value uint256) returns(bool)
+func (_SRTToken *SRTTokenSession) RequestWithdrawal(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.RequestWithdrawal(&_SRTToken.TransactOpts, _value)
+}
+
+// RequestWithdrawal is a paid mutator transaction binding the contract method 0x9ee679e8.
+//
+// Solidity: function requestWithdrawal(_value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) RequestWithdrawal(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.RequestWithdrawal(&_SRTToken.TransactOpts, _value)
+}
+
+// SetAdvisoryBoard is a paid mutator transaction binding the contract method 0xc55e1103.
+//
+// Solidity: function setAdvisoryBoard(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetAdvisoryBoard(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setAdvisoryBoard", _value)
+}
+
+// SetAdvisoryBoard is a paid mutator transaction binding the contract method 0xc55e1103.
+//
+// Solidity: function setAdvisoryBoard(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetAdvisoryBoard(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetAdvisoryBoard(&_SRTToken.TransactOpts, _value)
+}
+
+// SetAdvisoryBoard is a paid mutator transaction binding the contract method 0xc55e1103.
+//
+// Solidity: function setAdvisoryBoard(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetAdvisoryBoard(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetAdvisoryBoard(&_SRTToken.TransactOpts, _value)
+}
+
+// SetBenefactor is a paid mutator transaction binding the contract method 0x8fc47bc9.
+//
+// Solidity: function setBenefactor(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetBenefactor(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setBenefactor", _value)
+}
+
+// SetBenefactor is a paid mutator transaction binding the contract method 0x8fc47bc9.
+//
+// Solidity: function setBenefactor(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetBenefactor(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBenefactor(&_SRTToken.TransactOpts, _value)
+}
+
+// SetBenefactor is a paid mutator transaction binding the contract method 0x8fc47bc9.
+//
+// Solidity: function setBenefactor(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetBenefactor(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBenefactor(&_SRTToken.TransactOpts, _value)
+}
+
+// SetBounty is a paid mutator transaction binding the contract method 0xbc300ed3.
+//
+// Solidity: function setBounty(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetBounty(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setBounty", _value)
+}
+
+// SetBounty is a paid mutator transaction binding the contract method 0xbc300ed3.
+//
+// Solidity: function setBounty(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetBounty(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBounty(&_SRTToken.TransactOpts, _value)
+}
+
+// SetBounty is a paid mutator transaction binding the contract method 0xbc300ed3.
+//
+// Solidity: function setBounty(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetBounty(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBounty(&_SRTToken.TransactOpts, _value)
+}
+
+// SetBuyDiscount is a paid mutator transaction binding the contract method 0x9556b8f3.
+//
+// Solidity: function setBuyDiscount(_discount uint256) returns()
+func (_SRTToken *SRTTokenTransactor) SetBuyDiscount(opts *bind.TransactOpts, _discount *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setBuyDiscount", _discount)
+}
+
+// SetBuyDiscount is a paid mutator transaction binding the contract method 0x9556b8f3.
+//
+// Solidity: function setBuyDiscount(_discount uint256) returns()
+func (_SRTToken *SRTTokenSession) SetBuyDiscount(_discount *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBuyDiscount(&_SRTToken.TransactOpts, _discount)
+}
+
+// SetBuyDiscount is a paid mutator transaction binding the contract method 0x9556b8f3.
+//
+// Solidity: function setBuyDiscount(_discount uint256) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetBuyDiscount(_discount *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetBuyDiscount(&_SRTToken.TransactOpts, _discount)
+}
+
+// SetCompany is a paid mutator transaction binding the contract method 0xa8db2445.
+//
+// Solidity: function setCompany(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetCompany(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setCompany", _value)
+}
+
+// SetCompany is a paid mutator transaction binding the contract method 0xa8db2445.
+//
+// Solidity: function setCompany(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetCompany(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetCompany(&_SRTToken.TransactOpts, _value)
+}
+
+// SetCompany is a paid mutator transaction binding the contract method 0xa8db2445.
+//
+// Solidity: function setCompany(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetCompany(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetCompany(&_SRTToken.TransactOpts, _value)
+}
+
+// SetConsultants is a paid mutator transaction binding the contract method 0xbcdc4a5a.
+//
+// Solidity: function setConsultants(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetConsultants(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setConsultants", _value)
+}
+
+// SetConsultants is a paid mutator transaction binding the contract method 0xbcdc4a5a.
+//
+// Solidity: function setConsultants(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetConsultants(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetConsultants(&_SRTToken.TransactOpts, _value)
+}
+
+// SetConsultants is a paid mutator transaction binding the contract method 0xbcdc4a5a.
+//
+// Solidity: function setConsultants(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetConsultants(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetConsultants(&_SRTToken.TransactOpts, _value)
+}
+
+// SetEscrow is a paid mutator transaction binding the contract method 0x0df9a504.
+//
+// Solidity: function setEscrow(_escrow1 address, _escrow2 address, _escrow3 address) returns()
+func (_SRTToken *SRTTokenTransactor) SetEscrow(opts *bind.TransactOpts, _escrow1 common.Address, _escrow2 common.Address, _escrow3 common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setEscrow", _escrow1, _escrow2, _escrow3)
+}
+
+// SetEscrow is a paid mutator transaction binding the contract method 0x0df9a504.
+//
+// Solidity: function setEscrow(_escrow1 address, _escrow2 address, _escrow3 address) returns()
+func (_SRTToken *SRTTokenSession) SetEscrow(_escrow1 common.Address, _escrow2 common.Address, _escrow3 common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetEscrow(&_SRTToken.TransactOpts, _escrow1, _escrow2, _escrow3)
+}
+
+// SetEscrow is a paid mutator transaction binding the contract method 0x0df9a504.
+//
+// Solidity: function setEscrow(_escrow1 address, _escrow2 address, _escrow3 address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetEscrow(_escrow1 common.Address, _escrow2 common.Address, _escrow3 common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetEscrow(&_SRTToken.TransactOpts, _escrow1, _escrow2, _escrow3)
+}
+
+// SetInfrostructure is a paid mutator transaction binding the contract method 0x87bd27df.
+//
+// Solidity: function setInfrostructure(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetInfrostructure(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setInfrostructure", _value)
+}
+
+// SetInfrostructure is a paid mutator transaction binding the contract method 0x87bd27df.
+//
+// Solidity: function setInfrostructure(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetInfrostructure(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetInfrostructure(&_SRTToken.TransactOpts, _value)
+}
+
+// SetInfrostructure is a paid mutator transaction binding the contract method 0x87bd27df.
+//
+// Solidity: function setInfrostructure(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetInfrostructure(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetInfrostructure(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMaxTokensAmount is a paid mutator transaction binding the contract method 0xf4005cb6.
+//
+// Solidity: function setMaxTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenTransactor) SetMaxTokensAmount(opts *bind.TransactOpts, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setMaxTokensAmount", _value)
+}
+
+// SetMaxTokensAmount is a paid mutator transaction binding the contract method 0xf4005cb6.
+//
+// Solidity: function setMaxTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenSession) SetMaxTokensAmount(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMaxTokensAmount(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMaxTokensAmount is a paid mutator transaction binding the contract method 0xf4005cb6.
+//
+// Solidity: function setMaxTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetMaxTokensAmount(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMaxTokensAmount(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMigrationAgent is a paid mutator transaction binding the contract method 0x75e2ff65.
+//
+// Solidity: function setMigrationAgent(_value address) returns()
+func (_SRTToken *SRTTokenTransactor) SetMigrationAgent(opts *bind.TransactOpts, _value common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setMigrationAgent", _value)
+}
+
+// SetMigrationAgent is a paid mutator transaction binding the contract method 0x75e2ff65.
+//
+// Solidity: function setMigrationAgent(_value address) returns()
+func (_SRTToken *SRTTokenSession) SetMigrationAgent(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMigrationAgent(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMigrationAgent is a paid mutator transaction binding the contract method 0x75e2ff65.
+//
+// Solidity: function setMigrationAgent(_value address) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetMigrationAgent(_value common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMigrationAgent(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMinTokensAmount is a paid mutator transaction binding the contract method 0x9ca39000.
+//
+// Solidity: function setMinTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenTransactor) SetMinTokensAmount(opts *bind.TransactOpts, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setMinTokensAmount", _value)
+}
+
+// SetMinTokensAmount is a paid mutator transaction binding the contract method 0x9ca39000.
+//
+// Solidity: function setMinTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenSession) SetMinTokensAmount(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMinTokensAmount(&_SRTToken.TransactOpts, _value)
+}
+
+// SetMinTokensAmount is a paid mutator transaction binding the contract method 0x9ca39000.
+//
+// Solidity: function setMinTokensAmount(_value uint256) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetMinTokensAmount(_value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetMinTokensAmount(&_SRTToken.TransactOpts, _value)
+}
+
+// SetTokenPrice is a paid mutator transaction binding the contract method 0x6a61e5fc.
+//
+// Solidity: function setTokenPrice(_price uint256) returns()
+func (_SRTToken *SRTTokenTransactor) SetTokenPrice(opts *bind.TransactOpts, _price *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "setTokenPrice", _price)
+}
+
+// SetTokenPrice is a paid mutator transaction binding the contract method 0x6a61e5fc.
+//
+// Solidity: function setTokenPrice(_price uint256) returns()
+func (_SRTToken *SRTTokenSession) SetTokenPrice(_price *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetTokenPrice(&_SRTToken.TransactOpts, _price)
+}
+
+// SetTokenPrice is a paid mutator transaction binding the contract method 0x6a61e5fc.
+//
+// Solidity: function setTokenPrice(_price uint256) returns()
+func (_SRTToken *SRTTokenTransactorSession) SetTokenPrice(_price *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.SetTokenPrice(&_SRTToken.TransactOpts, _price)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(_to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactor) Transfer(opts *bind.TransactOpts, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "transfer", _to, _value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(_to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.Transfer(&_SRTToken.TransactOpts, _to, _value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(_to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) Transfer(_to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.Transfer(&_SRTToken.TransactOpts, _to, _value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(_from address, _to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactor) TransferFrom(opts *bind.TransactOpts, _from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "transferFrom", _from, _to, _value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(_from address, _to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.TransferFrom(&_SRTToken.TransactOpts, _from, _to, _value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(_from address, _to address, _value uint256) returns(bool)
+func (_SRTToken *SRTTokenTransactorSession) TransferFrom(_from common.Address, _to common.Address, _value *big.Int) (*types.Transaction, error) {
+	return _SRTToken.Contract.TransferFrom(&_SRTToken.TransactOpts, _from, _to, _value)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_SRTToken *SRTTokenTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _SRTToken.contract.Transact(opts, "transferOwnership", newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_SRTToken *SRTTokenSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.TransferOwnership(&_SRTToken.TransactOpts, newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(newOwner address) returns()
+func (_SRTToken *SRTTokenTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _SRTToken.Contract.TransferOwnership(&_SRTToken.TransactOpts, newOwner)
+}
+
+// SafeMathABI is the input ABI used to generate the binding from.
+const SafeMathABI = "[]"
+
+// SafeMathBin is the compiled bytecode used for deploying new contracts.
+const SafeMathBin = `0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058203012e2ceeecb013c7bb567684db13798e10b35a3804751f8d14aa1fc3b0e29680029`
+
+// DeploySafeMath deploys a new Ethereum contract, binding an instance of SafeMath to it.
+func DeploySafeMath(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *SafeMath, error) {
+	parsed, err := abi.JSON(strings.NewReader(SafeMathABI))
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	address, tx, contract, err := bind.DeployContract(auth, parsed, common.FromHex(SafeMathBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &SafeMath{SafeMathCaller: SafeMathCaller{contract: contract}, SafeMathTransactor: SafeMathTransactor{contract: contract}}, nil
+}
+
+// SafeMath is an auto generated Go binding around an Ethereum contract.
+type SafeMath struct {
+	SafeMathCaller     // Read-only binding to the contract
+	SafeMathTransactor // Write-only binding to the contract
+}
+
+// SafeMathCaller is an auto generated read-only Go binding around an Ethereum contract.
+type SafeMathCaller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// SafeMathTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type SafeMathTransactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// SafeMathSession is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type SafeMathSession struct {
+	Contract     *SafeMath         // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// SafeMathCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type SafeMathCallerSession struct {
+	Contract *SafeMathCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts   // Call options to use throughout this session
+}
+
+// SafeMathTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type SafeMathTransactorSession struct {
+	Contract     *SafeMathTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+}
+
+// SafeMathRaw is an auto generated low-level Go binding around an Ethereum contract.
+type SafeMathRaw struct {
+	Contract *SafeMath // Generic contract binding to access the raw methods on
+}
+
+// SafeMathCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type SafeMathCallerRaw struct {
+	Contract *SafeMathCaller // Generic read-only contract binding to access the raw methods on
+}
+
+// SafeMathTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type SafeMathTransactorRaw struct {
+	Contract *SafeMathTransactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewSafeMath creates a new instance of SafeMath, bound to a specific deployed contract.
+func NewSafeMath(address common.Address, backend bind.ContractBackend) (*SafeMath, error) {
+	contract, err := bindSafeMath(address, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &SafeMath{SafeMathCaller: SafeMathCaller{contract: contract}, SafeMathTransactor: SafeMathTransactor{contract: contract}}, nil
+}
+
+// NewSafeMathCaller creates a new read-only instance of SafeMath, bound to a specific deployed contract.
+func NewSafeMathCaller(address common.Address, caller bind.ContractCaller) (*SafeMathCaller, error) {
+	contract, err := bindSafeMath(address, caller, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &SafeMathCaller{contract: contract}, nil
+}
+
+// NewSafeMathTransactor creates a new write-only instance of SafeMath, bound to a specific deployed contract.
+func NewSafeMathTransactor(address common.Address, transactor bind.ContractTransactor) (*SafeMathTransactor, error) {
+	contract, err := bindSafeMath(address, nil, transactor)
+	if err != nil {
+		return nil, err
+	}
+	return &SafeMathTransactor{contract: contract}, nil
+}
+
+// bindSafeMath binds a generic wrapper to an already deployed contract.
+func bindSafeMath(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(SafeMathABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_SafeMath *SafeMathRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _SafeMath.Contract.SafeMathCaller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_SafeMath *SafeMathRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SafeMath.Contract.SafeMathTransactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_SafeMath *SafeMathRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _SafeMath.Contract.SafeMathTransactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_SafeMath *SafeMathCallerRaw) Call(opts *bind.CallOpts, result interface{}, method string, params ...interface{}) error {
+	return _SafeMath.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_SafeMath *SafeMathTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _SafeMath.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_SafeMath *SafeMathTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _SafeMath.Contract.contract.Transact(opts, method, params...)
+}

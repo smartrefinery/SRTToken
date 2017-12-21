@@ -213,13 +213,13 @@ contract SRTToken is ERC20, BasicToken, Ownable {
   /**
    * @dev Admin cann add tokens to investor
    * @param _to address of investor
-   * @param _value amount of tokens will be added (will be multiplied by MULTIPLIER)
+   * @param _value amount of tokens will be added (will be NOT multiplied by MULTIPLIER)
    * @param _referal address of referal
    */
   function addTokens(address _to, uint256 _value, address _referal) onlyOwner returns (bool) {
     require(_to != address(0));
     //calculate tokens amount
-    uint256 amount = _value * MULTIPLIER;
+    uint256 amount = _value;
 
     //checks
     if(address(0) != _referal){
