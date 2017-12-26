@@ -13,7 +13,7 @@ contract SRTToken is ERC20, BasicToken, Ownable {
   string public constant symbol = "SRT";
   uint256 public constant MULTIPLIER = 10 ** uint256(decimals);
   uint256 public constant INITIAL_SUPPLY = 100000000 * MULTIPLIER;
-  uint256 public constant TOKENS_FOR_SELLE = 62000000 * MULTIPLIER;
+  uint256 public constant TOKENS_FOR_SALE = 62000000 * MULTIPLIER;
   uint8 public constant decimals = 5;
   uint8 public constant STAGE1 = 0; //PRE-ICO
   uint8 public constant STAGE2 = 1; //1 stage of ICO
@@ -28,7 +28,7 @@ contract SRTToken is ERC20, BasicToken, Ownable {
   uint256 public tokenPrice; //price per token in wei
   uint256 public buyDiscount = 15; //discount percents, investor receives amount + amount * buyDiscount
   uint256 public totalWithdrawalAmountInControl = 0; //total amount of withdrawals, used to control 10% per month
-  uint256 public totalEarnedEthBalance; // total amount ETH contract received during ICO
+  uint256 public totalEarnedEthBalance = 0; // total amount ETH contract received during ICO
   uint256 public timeCreated; //time when smart contract was deployed
   uint256 public requestedWithdrawal; //requested amount of ETH for withdrawal
   address public benefactor; //address where ETH will be delivered
@@ -62,18 +62,18 @@ contract SRTToken is ERC20, BasicToken, Ownable {
 
   /**
    * @dev Admin can set minimal amount of tokens user can have
-   * @param _value minimal amount of tokens (will be multiplied of MULTIPLIER utomatically)
+   * @param _value minimal amount of tokens (will be NOT multiplied of MULTIPLIER utomatically)
    */
   function setMinTokensAmount(uint256 _value) onlyOwner {
-      minTokensAmount = _value * MULTIPLIER;
+      minTokensAmount = _value;
   }
 
   /**
    * @dev Admin can set maximum amount of tokens user can have
-   * @param _value maximum amount of tokens (will be multiplied of MULTIPLIER utomatically)
+   * @param _value maximum amount of tokens (will be NOT multiplied of MULTIPLIER utomatically)
    */
   function setMaxTokensAmount(uint256 _value) onlyOwner {
-      maxTokensAmount = _value * MULTIPLIER;
+      maxTokensAmount = _value;
   }
 
   /**
@@ -188,7 +188,8 @@ contract SRTToken is ERC20, BasicToken, Ownable {
       balances[owner] = balances[owner] - amount - amount * 7 / 100;
       //add to total amount of current stage
       tokensSoldInCurrentStage = tokensSoldInCurrentStage.add(amount + amount * 7 / 100);
-
+      //add eraned value to the counter
+      totalEarnedEthBalance = totalEarnedEthBalance + msg.value;
       //fire events
       Transfer(owner, msg.sender, amount + amount * 2 / 100);
       Transfer(owner, _referal, amount * 5 / 100);
@@ -204,7 +205,8 @@ contract SRTToken is ERC20, BasicToken, Ownable {
       balances[owner] = balances[owner] - amount;
       //add to total amount of current stage
       tokensSoldInCurrentStage = tokensSoldInCurrentStage.add(amount);
-
+      //add eraned value to the counter
+      totalEarnedEthBalance = totalEarnedEthBalance + msg.value;
       //fire event
       Transfer(owner, msg.sender, amount);
     }
@@ -350,7 +352,7 @@ contract SRTToken is ERC20, BasicToken, Ownable {
     require(stage < STAGE5);
 
     //calculate amount of total tokens for bonuses of current stage
-    uint256 tokensForBonuses = INITIAL_SUPPLY * tokensSoldInCurrentStage / (TOKENS_FOR_SELLE * 100);
+    uint256 tokensForBonuses = INITIAL_SUPPLY * tokensSoldInCurrentStage / (TOKENS_FOR_SALE * 100);
 
     //bonuses distribution
     balances[company] += 23 * tokensForBonuses;
@@ -362,10 +364,9 @@ contract SRTToken is ERC20, BasicToken, Ownable {
     tokensSoldInCurrentStage = 0;
     //iterate current stage
     stage ++;
-    //if it was last stage, then burn rest of tokens on owners account and define total earned ETH amount
+    //if it was last stage, then burn rest of tokens on owners account
     if(stage == STAGE5){
       balances[owner] = 0;
-      totalEarnedEthBalance = this.balance;
     }
   }
 
@@ -404,21 +405,20 @@ contract SRTToken is ERC20, BasicToken, Ownable {
     if(msg.sender == escrow3) escrow3Accepted = true;
 
     //checks all votes
-    require( escrow1Accepted );
-    require( escrow2Accepted );
-    require( escrow3Accepted );
+    if(escrow1Accepted && escrow2Accepted && escrow3Accepted){
+      if(!benefactor.send(requestedWithdrawal)){ return false; }
+      //if stage is not PRE-ICO, iterate totalWithdrawalAmountInControl amount, to control 10% of monthly withdrawals
+      if(stage > STAGE1) totalWithdrawalAmountInControl += requestedWithdrawal;
 
-    if(!benefactor.send(requestedWithdrawal)){ return false; }
-    //if stage is not PRE-ICO, iterate totalWithdrawalAmountInControl amount, to control 10% of monthly withdrawals
-    if(stage > STAGE1) totalWithdrawalAmountInControl += requestedWithdrawal;
-
-    ///reset all acceptations from escorw accounts
-    escrow1Accepted = false;
-    escrow2Accepted = false;
-    escrow3Accepted = false;
-    //reset requestedWithdrawal amount
-    requestedWithdrawal = 0;
-    return true;
+      ///reset all acceptations from escorw accounts
+      escrow1Accepted = false;
+      escrow2Accepted = false;
+      escrow3Accepted = false;
+      //reset requestedWithdrawal amount
+      requestedWithdrawal = 0;
+      return true;
+    }
+    return false;
   }
 
   event PayForLicense(address indexed from, uint256 indexed value, string indexed receiptId);
